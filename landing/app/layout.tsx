@@ -21,6 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`h-full ${jakarta.variable}`}>
+      <head>
+        {/* Preload hero image so LCP isn't blocked waiting for CSS to parse */}
+        <link rel="preload" as="image" href="/bg-hero.png" fetchPriority="high" />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

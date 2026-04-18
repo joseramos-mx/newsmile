@@ -1,13 +1,16 @@
+import dynamic from "next/dynamic";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Allies from "./components/Allies";
-import Feature from "./components/Feature";
-import Showcase from "./components/Showcase";
-import Benefits from "./components/Benefits";
-import Testimonials from "./components/Testimonials";
-import CTA from "./components/CTA";
-import ContactForm from "./components/ContactForm";
-import Footer from "./components/Footer";
+
+// Lazy-load everything below the fold — splits JS into separate chunks
+const Allies       = dynamic(() => import("./components/Allies"));
+const Feature      = dynamic(() => import("./components/Feature"));
+const Showcase     = dynamic(() => import("./components/Showcase"));
+const Benefits     = dynamic(() => import("./components/Benefits"));
+const Testimonials = dynamic(() => import("./components/Testimonials"));
+const CTA          = dynamic(() => import("./components/CTA"));
+const ContactForm  = dynamic(() => import("./components/ContactForm"));
+const Footer       = dynamic(() => import("./components/Footer"));
 
 export default function Home() {
   return (

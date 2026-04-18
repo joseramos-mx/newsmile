@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ShieldCheck } from "@phosphor-icons/react";
 
@@ -34,10 +35,6 @@ export default function Hero() {
   return (
     <section
       style={{
-        backgroundImage: "url('/bg-hero.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
         fontFamily: "var(--font-jakarta), 'Plus Jakarta Sans', sans-serif",
         position: "relative",
         width: "100%",
@@ -45,17 +42,28 @@ export default function Hero() {
       }}
       className="h-screen"
     >
+      {/* Hero image — next/image with priority eliminates the LCP delay */}
+      <Image
+        src="/bg-hero.png"
+        alt=""
+        fill
+        priority
+        quality={85}
+        style={{ objectFit: "cover", objectPosition: "center", zIndex: 0 }}
+        sizes="100vw"
+      />
+
       {/* ── Overlays ─────────────────────────────────────────── */}
-      <div className="absolute inset-0 z-[1] pointer-events-none" style={{ background: "radial-gradient(ellipse at 55% 45%, transparent 25%, rgba(0,0,0,0.52) 100%)" }} />
-      <div className="absolute inset-0 z-[1] pointer-events-none" style={{ background: "linear-gradient(to right, rgba(0,0,0,0.40) 0%, transparent 55%)" }} />
-      <div className="absolute bottom-0 left-0 right-0 h-[55%] z-[1] pointer-events-none" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%)" }} />
+      <div className="absolute inset-0 z-1 pointer-events-none" style={{ background: "radial-gradient(ellipse at 55% 45%, transparent 25%, rgba(0,0,0,0.52) 100%)" }} />
+      <div className="absolute inset-0 z-1 pointer-events-none" style={{ background: "linear-gradient(to right, rgba(0,0,0,0.40) 0%, transparent 55%)" }} />
+      <div className="absolute bottom-0 left-0 right-0 h-[55%] z-1 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%)" }} />
 
       {/* ── Large background word — desktop only ─────────────── */}
       <motion.div
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        className="hidden lg:block absolute bottom-0 left-0 w-full z-[2] pointer-events-none select-none"
+        className="hidden lg:block absolute bottom-0 left-0 w-full z-2 pointer-events-none select-none"
         style={{ lineHeight: 0.85 }}
       >
         <span
@@ -71,7 +79,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-        className="hidden lg:block absolute left-10 z-[3] max-w-xs"
+        className="hidden lg:block absolute left-10 z-3 max-w-xs"
         style={{ bottom: "calc(20vw + 2.5rem)" }}
       >
         <p className="text-white/90 text-lg font-light leading-relaxed">
@@ -80,12 +88,11 @@ export default function Hero() {
         </p>
       </motion.div>
 
-      {/* ── Desktop: glass form card ──────────────────────────── */}
-      <motion.div
+|      <motion.div
         initial={{ opacity: 0, x: 40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-        className="hidden lg:block absolute z-[3]"
+        className="hidden lg:block absolute z-3"
         style={{
           top: "17%",
           transform: "translateY(-50%)",
