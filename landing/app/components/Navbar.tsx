@@ -92,6 +92,7 @@ export default function Navbar() {
               width={130}
               height={24}
               priority
+              loading="eager"
               style={{ height: "21px", width: "auto", filter: onDark ? "brightness(0) invert(1)" : "none", opacity: onDark ? 0.92 : 1, transition: "filter 0.45s, opacity 0.45s" }}
             />
           </a>
