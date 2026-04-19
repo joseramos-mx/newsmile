@@ -17,7 +17,9 @@ export default function Home() {
     <>
       <Navbar />
       <main>
-        <Hero />
+        <div className="z-100">
+          <Hero />
+        </div>
         <Allies />
         <Feature />
         <Showcase />

@@ -62,6 +62,7 @@ function LogoMark({ index }: { index: number }) {
 
 function BrandItem({ label, name, index }: { label: string; name: string; index: number }) {
   return (
+    
     <div
       style={{
         display: "inline-flex",
@@ -69,22 +70,21 @@ function BrandItem({ label, name, index }: { label: string; name: string; index:
         gap: "0.85rem",
         flexShrink: 0,
         marginRight: "clamp(2.5rem, 5vw, 4.5rem)",
-        color: "#C1C4BC",
-        opacity: 0.85,
+        color: "rgba(255,255,255,0.45)",
+        opacity: 1,
         transition: "opacity 0.25s, color 0.25s",
         cursor: "default",
       }}
       onMouseEnter={(e) => {
         const el = e.currentTarget as HTMLDivElement;
-        el.style.opacity = "1";
-        el.style.color = "#7A7D78";
+        el.style.color = "rgba(255,255,255,0.8)";
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget as HTMLDivElement;
-        el.style.opacity = "0.85";
-        el.style.color = "#C1C4BC";
+        el.style.color = "rgba(255,255,255,0.45)";
       }}
     >
+      
       <LogoMark index={index} />
       <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
         <span style={{
@@ -122,11 +122,16 @@ export default function Allies() {
       ref={ref}
       id="allies"
       style={{
-        background: "var(--ivory)",
+        position: "relative",
+        background: `linear-gradient(to bottom,
+          #070707 0%,   #070707 22%,
+          #111110 32%,  #2a2824 44%,
+          #6b6660 56%,  #b8b4ae 68%,
+          #dedad5 78%,  #edeae6 86%,
+          #f5f3f0 92%,  #FAF7F3 100%
+        )`,
         overflow: "hidden",
-        padding: "3.5rem 0",
-        borderTop: "1px solid rgba(178,182,172,0.18)",
-        borderBottom: "1px solid rgba(178,182,172,0.18)",
+        padding: "3.5rem 0 14rem",
       }}
     >
       {/* Label */}
@@ -145,13 +150,13 @@ export default function Allies() {
           fontWeight: 600,
           letterSpacing: "0.14em",
           textTransform: "uppercase",
-          color: "var(--mineral)",
+          color: "rgba(255,255,255,0.4)",
           display: "flex",
           alignItems: "center",
           gap: "0.75rem",
           margin: 0,
         }}>
-          <span style={{ display: "inline-block", width: "18px", height: "1px", background: "var(--arandano)", opacity: 0.4 }} />
+          <span style={{ display: "inline-block", width: "18px", height: "1px", background: "rgba(255,255,255,0.3)" }} />
           Respaldados por certificaciones nacionales e internacionales
         </p>
       </motion.div>
