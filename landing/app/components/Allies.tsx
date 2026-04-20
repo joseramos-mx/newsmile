@@ -115,7 +115,7 @@ function BrandItem({ label, name, index }: { label: string; name: string; index:
 
 export default function Allies() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "" });
+  const inView = useInView(ref, { once: true });
 
   return (
     <section
