@@ -115,7 +115,7 @@ function BrandItem({ label, name, index }: { label: string; name: string; index:
 
 export default function Allies() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "" });
 
   return (
     <section
@@ -123,15 +123,9 @@ export default function Allies() {
       id="allies"
       style={{
         position: "relative",
-        background: `linear-gradient(to bottom,
-          #070707 0%,   #070707 22%,
-          #111110 32%,  #2a2824 44%,
-          #6b6660 56%,  #b8b4ae 68%,
-          #dedad5 78%,  #edeae6 86%,
-          #f5f3f0 92%,  #FAF7F3 100%
-        )`,
+        background: "#070707",
         overflow: "hidden",
-        padding: "3.5rem 0 14rem",
+        padding: "10rem 0 3rem",
       }}
     >
       {/* Label */}

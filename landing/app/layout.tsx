@@ -20,12 +20,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`h-full ${jakarta.variable}`}>
+    <html lang="es" className={`h-full bg-[#070707] ${jakarta.variable}`}>
       <head>
         {/* Preload hero image so LCP isn't blocked waiting for CSS to parse */}
         <link rel="preload" as="image" href="/newsmile%20icon.png" fetchPriority="high" />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col ">{children}</body>
     </html>
   );
 }
