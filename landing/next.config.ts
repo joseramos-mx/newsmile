@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     qualities: [75, 100],
   },
-  // Compress responses
   compress: true,
+  allowedDevOrigins: ["192.168.68.57"],
 };
 
 export default nextConfig;

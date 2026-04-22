@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { MapPin, Envelope, WhatsappLogo, CheckCircle, ArrowRight } from "@phosphor-icons/react";
+import { CheckCircle, ArrowRight, MapPin, Envelope, WhatsappLogo } from "@phosphor-icons/react";
 
 const services = [
   "Alta Estética Cerámica",
@@ -14,11 +14,11 @@ const services = [
   "Otro servicio",
 ];
 
-const contactInfo = [
-  { Icon: MapPin,       label: "Ubicación", value: "Toluca, Estado de México" },
-  { Icon: Envelope,     label: "Email",     value: "contacto@newsmilelab.mx"  },
-  { Icon: WhatsappLogo, label: "WhatsApp",  value: "+52 722 000 0000"         },
-];
+const fieldBase =
+  "w-full bg-transparent border-b border-white/12 pb-3 pt-1 text-white/90 text-sm placeholder:text-white/20 outline-none transition-colors duration-200 focus:border-[#317573]/80 font-[inherit]";
+
+const labelBase =
+  "flex items-center gap-2 text-[0.58rem] font-bold tracking-[0.18em] uppercase mb-3 select-none";
 
 export default function ContactForm() {
   const ref = useRef(null);
@@ -27,9 +27,8 @@ export default function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,397 +40,173 @@ export default function ContactForm() {
     <section
       ref={ref}
       id="form"
-      className="section-pad"
-      style={{ background: "var(--near-black)", position: "relative", overflow: "hidden" }}
+      className="relative overflow-hidden bg-[#070707] py-24 md:py-32"
     >
-      {/* Background blobs */}
-      <motion.div
-        animate={{ scale: [1, 1.06, 1], rotate: [0, 4, 0] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          position: "absolute",
-          top: "-15%",
-          left: "-8%",
-          width: "500px",
-          height: "500px",
-          borderRadius: "60% 40% 70% 30% / 50% 60% 40% 50%",
-          background: "radial-gradient(circle, rgba(37,89,88,0.18) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          bottom: "-20%",
-          right: "-10%",
-          width: "450px",
-          height: "450px",
-          borderRadius: "40% 60% 30% 70% / 60% 30% 70% 40%",
-          background: "radial-gradient(circle, rgba(246,194,137,0.07) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
+      {/* Ambient glow — brand color behind the card */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div className="h-[700px] w-[700px] rounded-full bg-[#255958]/10 blur-[140px]" />
+      </div>
+      <div className="pointer-events-none absolute bottom-0 right-[20%] h-[400px] w-[400px] rounded-full bg-[#F6C289]/4 blur-[100px]" />
 
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 2rem", position: "relative", zIndex: 1 }}>
-        <div
-          style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "6rem", alignItems: "start" }}
-          className="form-layout"
-        >
-          {/* Left */}
-          <div>
-            <motion.span
-              initial={{ opacity: 0, y: 16 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5 }}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                background: "rgba(246,194,137,0.12)",
-                color: "var(--solar)",
-                padding: "0.4rem 1rem",
-                borderRadius: "100px",
-                fontSize: "0.7rem",
-                fontWeight: 600,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                marginBottom: "1.5rem",
-              }}
-            >
-              <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "var(--solar)", display: "inline-block" }} />
-              Contacto
-            </motion.span>
+      <div className="relative z-10 mx-auto max-w-[1100px] px-5 md:px-10">
 
-            <motion.h2
-              initial={{ opacity: 0, y: 28 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              style={{
-                fontSize: "clamp(1.8rem, 3vw, 3rem)",
-                fontWeight: 700,
-                letterSpacing: "-0.025em",
-                color: "white",
-                lineHeight: 1.1,
-                marginBottom: "1.25rem",
-              }}
-            >
-              Tu aliado en{" "}
-              <span style={{ color: "var(--solar)", fontWeight: 300, fontStyle: "normal" }}>
-                cada diagnóstico
-              </span>
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              style={{
-                fontSize: "0.9rem",
-                lineHeight: 1.75,
-                color: "rgba(250,247,243,0.5)",
-                fontWeight: 300,
-                marginBottom: "2.5rem",
-              }}
-            >
-              ¿Tienes un caso de alta complejidad o necesitas consultoría? Escríbenos y te acompañamos desde el diagnóstico hasta el resultado final.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}
-            >
-              {contactInfo.map((item) => (
-                <div
-                  key={item.label}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "1rem",
-                    padding: "1rem 1.25rem",
-                    background: "rgba(250,247,243,0.04)",
-                    borderRadius: "16px",
-                    border: "1px solid rgba(250,247,243,0.07)",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      borderRadius: "12px",
-                      background: "rgba(37,89,88,0.3)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <item.Icon size={18} color="var(--arandano-light)" weight="duotone" />
-                  </div>
-                  <div>
-                    <div style={{ fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(250,247,243,0.35)", marginBottom: "0.2rem" }}>
-                      {item.label}
-                    </div>
-                    <div style={{ fontSize: "0.9rem", color: "rgba(250,247,243,0.8)", fontWeight: 500 }}>
-                      {item.value}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Right: Form card */}
+        {submitted ? (
+          /* ── Success state ── */
           <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.97 }}
-            animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="mx-auto max-w-md rounded-[28px] border border-white/8 bg-white/[0.04] backdrop-blur-2xl p-16 text-center flex flex-col items-center gap-6"
           >
-            {submitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                style={{
-                  background: "rgba(250,247,243,0.05)",
-                  border: "1px solid rgba(250,247,243,0.1)",
-                  borderRadius: "28px",
-                  padding: "4rem",
-                  textAlign: "center",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: "1.5rem",
-                }}
-              >
-                <div
-                  style={{
-                    width: "72px",
-                    height: "72px",
-                    borderRadius: "50%",
-                    background: "rgba(37,89,88,0.2)",
-                    border: "1.5px solid var(--arandano-light)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <CheckCircle size={36} color="var(--arandano-light)" weight="duotone" />
-                </div>
-                <h3 style={{ fontSize: "1.5rem", fontWeight: 700, color: "white", letterSpacing: "-0.01em" }}>
-                  ¡Mensaje enviado!
-                </h3>
-                <p style={{ fontSize: "0.9rem", color: "rgba(250,247,243,0.55)", lineHeight: 1.7, fontWeight: 300 }}>
-                  Nuestro equipo se pondrá en contacto contigo en breve. Estamos listos para ser tu aliado dental.
-                </p>
-                <span style={{ fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--solar)", fontWeight: 600 }}>
-                  New Smile Dental Lab · Toluca, México
-                </span>
-              </motion.div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                style={{
-                  background: "rgba(250,247,243,0.04)",
-                  border: "1px solid rgba(250,247,243,0.08)",
-                  borderRadius: "28px",
-                  padding: "2.5rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "1.75rem",
-                }}
-              >
-                <div style={{ fontSize: "1rem", fontWeight: 700, color: "white", paddingBottom: "1.25rem", borderBottom: "1px solid rgba(250,247,243,0.08)" }}>
-                  Solicitar cotización
+            <CheckCircle size={52} color="#317573" weight="duotone" />
+            <h3 className="text-2xl font-bold text-white tracking-tight">Solicitud enviada.</h3>
+            <p className="text-sm text-white/40 leading-relaxed">
+              Nuestro equipo te contactará en menos de 24 h. Estamos listos para acompañarte en cada caso.
+            </p>
+            <span className="text-[0.58rem] tracking-[0.2em] uppercase text-[#F6C289] font-bold">
+              New Smile Dental Lab · Toluca, México
+            </span>
+          </motion.div>
+        ) : (
+          /* ── Main glass card ── */
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+            className="rounded-[28px] border border-white/8 bg-white/[0.04] backdrop-blur-2xl overflow-hidden"
+            style={{ boxShadow: "0 40px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)" }}
+          >
+            <div className="grid md:grid-cols-[1fr_1.6fr]">
+
+              {/* ── Left panel — brand info ── */}
+              <div className="border-b md:border-b-0 md:border-r border-white/6 p-8 md:p-10 flex flex-col justify-between gap-10">
+                <div>
+                  {/* Badge */}
+                  <span className="inline-flex items-center gap-2 rounded-full border border-[#F6C289]/20 bg-[#F6C289]/8 px-3 py-1 text-[0.58rem] font-bold tracking-[0.18em] uppercase text-[#F6C289] mb-6">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#F6C289]" />
+                    Contacto
+                  </span>
+
+                  <h2 className="text-[clamp(1.6rem,3vw,2.4rem)] font-bold leading-[1.1] tracking-[-0.025em] text-white mb-4">
+                    Tu aliado en{" "}
+                    <span className="font-light text-[#317573]">cada diagnóstico</span>
+                  </h2>
+
+                  <p className="text-sm text-white/35 leading-relaxed font-light">
+                    ¿Tienes un caso de alta complejidad? Escríbenos y te acompañamos desde el diagnóstico hasta el resultado final.
+                  </p>
                 </div>
 
-                {/* Row 1 */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }} className="form-row">
+                {/* Contact info — widget-style rows */}
+                <div className="flex flex-col gap-3">
                   {[
-                    { name: "name", label: "Nombre completo *", placeholder: "Dr. Juan Pérez", type: "text", required: true },
-                    { name: "email", label: "Email *", placeholder: "doctor@clinica.com", type: "email", required: true },
-                  ].map((f) => (
-                    <div key={f.name}>
-                      <label style={{ display: "block", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(250,247,243,0.35)", marginBottom: "0.5rem" }}>
-                        {f.label}
-                      </label>
-                      <input
-                        type={f.type}
-                        name={f.name}
-                        value={(form as Record<string, string>)[f.name]}
-                        onChange={handleChange}
-                        placeholder={f.placeholder}
-                        required={f.required}
-                        style={{
-                          background: "rgba(250,247,243,0.06)",
-                          border: "1px solid rgba(250,247,243,0.1)",
-                          borderRadius: "12px",
-                          padding: "0.875rem 1rem",
-                          width: "100%",
-                          color: "white",
-                          fontSize: "0.9rem",
-                          fontFamily: "inherit",
-                          outline: "none",
-                          transition: "border-color 0.2s, background 0.2s",
-                        }}
-                        onFocus={(e) => {
-                          e.currentTarget.style.borderColor = "rgba(37,89,88,0.6)";
-                          e.currentTarget.style.background = "rgba(250,247,243,0.08)";
-                        }}
-                        onBlur={(e) => {
-                          e.currentTarget.style.borderColor = "rgba(250,247,243,0.1)";
-                          e.currentTarget.style.background = "rgba(250,247,243,0.06)";
-                        }}
-                      />
+                    { Icon: MapPin,       text: "Toluca, Estado de México" },
+                    { Icon: Envelope,     text: "contacto@newsmilelab.mx" },
+                    { Icon: WhatsappLogo, text: "+52 722 000 0000" },
+                  ].map(({ Icon, text }) => (
+                    <div key={text} className="flex items-center gap-3 rounded-xl border border-white/6 bg-white/[0.03] px-4 py-3">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#255958]/20">
+                        <Icon size={15} color="#317573" weight="duotone" />
+                      </div>
+                      <span className="text-xs text-white/50 font-light">{text}</span>
                     </div>
                   ))}
                 </div>
+              </div>
 
-                {/* Row 2 */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }} className="form-row">
+              {/* ── Right panel — form ── */}
+              <form onSubmit={handleSubmit} className="p-8 md:p-10 flex flex-col gap-10">
+
+                {/* Form header */}
+                <div className="flex items-center justify-between border-b border-white/6 pb-6">
+                  <span className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white/30">
+                    Solicitar cotización
+                  </span>
+                  <span className="font-mono text-[0.6rem] text-white/15">NS — LAB</span>
+                </div>
+
+                {/* Row 1 */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                   <div>
-                    <label style={{ display: "block", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(250,247,243,0.35)", marginBottom: "0.5rem" }}>
-                      Teléfono / WhatsApp
+                    <label className={labelBase}>
+                      <span className="font-mono text-[#F6C289]/70">01</span>
+                      <span className="text-white/25">Nombre completo *</span>
                     </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={form.phone}
-                      onChange={handleChange}
-                      placeholder="+52 722 000 0000"
-                      style={{
-                        background: "rgba(250,247,243,0.06)",
-                        border: "1px solid rgba(250,247,243,0.1)",
-                        borderRadius: "12px",
-                        padding: "0.875rem 1rem",
-                        width: "100%",
-                        color: "white",
-                        fontSize: "0.9rem",
-                        fontFamily: "inherit",
-                        outline: "none",
-                        transition: "border-color 0.2s, background 0.2s",
-                      }}
-                      onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(37,89,88,0.6)"; e.currentTarget.style.background = "rgba(250,247,243,0.08)"; }}
-                      onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(250,247,243,0.1)"; e.currentTarget.style.background = "rgba(250,247,243,0.06)"; }}
-                    />
+                    <input type="text" name="name" value={form.name} onChange={handleChange}
+                      placeholder="Dr. Juan Pérez" required className={fieldBase} />
                   </div>
                   <div>
-                    <label style={{ display: "block", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(250,247,243,0.35)", marginBottom: "0.5rem" }}>
-                      Servicio de interés
+                    <label className={labelBase}>
+                      <span className="font-mono text-[#F6C289]/70">02</span>
+                      <span className="text-white/25">Email *</span>
                     </label>
-                    <select
-                      name="service"
-                      value={form.service}
-                      onChange={handleChange}
-                      style={{
-                        background: "rgba(250,247,243,0.06)",
-                        border: "1px solid rgba(250,247,243,0.1)",
-                        borderRadius: "12px",
-                        padding: "0.875rem 1rem",
-                        width: "100%",
-                        color: form.service ? "white" : "rgba(250,247,243,0.35)",
-                        fontSize: "0.9rem",
-                        fontFamily: "inherit",
-                        outline: "none",
-                        cursor: "pointer",
-                        appearance: "none",
-                        transition: "border-color 0.2s",
-                      }}
-                      onFocus={(e) => e.currentTarget.style.borderColor = "rgba(37,89,88,0.6)"}
-                      onBlur={(e) => e.currentTarget.style.borderColor = "rgba(250,247,243,0.1)"}
+                    <input type="email" name="email" value={form.email} onChange={handleChange}
+                      placeholder="doctor@clinica.com" required className={fieldBase} />
+                  </div>
+                </div>
+
+                {/* Row 2 */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <div>
+                    <label className={labelBase}>
+                      <span className="font-mono text-[#F6C289]/70">03</span>
+                      <span className="text-white/25">WhatsApp</span>
+                    </label>
+                    <input type="tel" name="phone" value={form.phone} onChange={handleChange}
+                      placeholder="+52 722 000 0000" className={fieldBase} />
+                  </div>
+                  <div>
+                    <label className={labelBase}>
+                      <span className="font-mono text-[#F6C289]/70">04</span>
+                      <span className="text-white/25">Servicio</span>
+                    </label>
+                    <select name="service" value={form.service} onChange={handleChange}
+                      className={`${fieldBase} cursor-pointer appearance-none`}
+                      style={{ color: form.service ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.2)" }}
                     >
-                      <option value="" disabled style={{ background: "#1F2C43" }}>Seleccionar...</option>
+                      <option value="" disabled style={{ background: "#0d1117" }}>Seleccionar...</option>
                       {services.map((s) => (
-                        <option key={s} value={s} style={{ background: "#1F2C43", color: "white" }}>{s}</option>
+                        <option key={s} value={s} style={{ background: "#0d1117", color: "white" }}>{s}</option>
                       ))}
                     </select>
                   </div>
                 </div>
 
-                {/* Message */}
+                {/* Row 3 — message */}
                 <div>
-                  <label style={{ display: "block", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(250,247,243,0.35)", marginBottom: "0.5rem" }}>
-                    Descripción del caso
+                  <label className={labelBase}>
+                    <span className="font-mono text-[#F6C289]/70">05</span>
+                    <span className="text-white/25">Descripción del caso</span>
                   </label>
-                  <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="Cuéntanos sobre tu caso clínico, tipo de rehabilitación, materiales de preferencia o si necesitas consultoría..."
-                    rows={4}
-                    style={{
-                      background: "rgba(250,247,243,0.06)",
-                      border: "1px solid rgba(250,247,243,0.1)",
-                      borderRadius: "12px",
-                      padding: "0.875rem 1rem",
-                      width: "100%",
-                      color: "white",
-                      fontSize: "0.9rem",
-                      fontFamily: "inherit",
-                      outline: "none",
-                      resize: "none",
-                      lineHeight: 1.65,
-                      transition: "border-color 0.2s, background 0.2s",
-                    }}
-                    onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(37,89,88,0.6)"; e.currentTarget.style.background = "rgba(250,247,243,0.08)"; }}
-                    onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(250,247,243,0.1)"; e.currentTarget.style.background = "rgba(250,247,243,0.06)"; }}
-                  />
+                  <textarea name="message" value={form.message} onChange={handleChange} rows={3}
+                    placeholder="Tipo de rehabilitación, materiales, complejidad del caso..."
+                    className={`${fieldBase} resize-none leading-relaxed`} />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  style={{
-                    background: "var(--arandano)",
-                    color: "white",
-                    border: "none",
-                    padding: "1.1rem 2rem",
-                    borderRadius: "100px",
-                    fontSize: "0.875rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.04em",
-                    cursor: loading ? "not-allowed" : "pointer",
-                    fontFamily: "inherit",
-                    transition: "transform 0.2s, box-shadow 0.2s, background 0.3s",
-                    opacity: loading ? 0.7 : 1,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "0.5rem",
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!loading) {
-                      const b = e.currentTarget as HTMLButtonElement;
-                      b.style.transform = "translateY(-2px)";
-                      b.style.boxShadow = "0 12px 32px rgba(37,89,88,0.4)";
-                      b.style.background = "var(--arandano-light)";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    const b = e.currentTarget as HTMLButtonElement;
-                    b.style.transform = "translateY(0)";
-                    b.style.boxShadow = "none";
-                    b.style.background = "var(--arandano)";
-                  }}
-                >
-                  {loading ? "Enviando..." : <><span>Enviar solicitud</span><ArrowRight size={16} weight="bold" /></>}
-                </button>
+                {/* Submit row */}
+                <div className="flex items-center justify-between gap-4 border-t border-white/6 pt-6">
+                  <p className="text-[0.6rem] text-white/18 leading-relaxed max-w-[180px]">
+                    Información confidencial. Política de privacidad aplicable.
+                  </p>
 
-                <p style={{ fontSize: "0.7rem", color: "rgba(250,247,243,0.25)", lineHeight: 1.5, fontWeight: 300 }}>
-                  Al enviar este formulario aceptas nuestra política de privacidad. Tu información es confidencial.
-                </p>
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="group flex shrink-0 items-center gap-3 rounded-xl bg-[#255958] px-7 py-3.5 text-xs font-bold tracking-[0.1em] uppercase text-white transition-all duration-200 hover:bg-[#317573] disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
+                    style={{ boxShadow: "0 0 24px rgba(37,89,88,0.3)" }}
+                  >
+                    {loading ? "Enviando..." : (
+                      <>
+                        <span>Enviar</span>
+                        <ArrowRight size={14} weight="bold" className="transition-transform duration-200 group-hover:translate-x-0.5" />
+                      </>
+                    )}
+                  </button>
+                </div>
               </form>
-            )}
+            </div>
           </motion.div>
-        </div>
+        )}
       </div>
-
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .form-layout { grid-template-columns: 1fr !important; gap: 3rem !important; }
-          .form-row { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </section>
   );
 }
