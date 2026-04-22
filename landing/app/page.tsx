@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 
 // Lazy-load everything below the fold — splits JS into separate chunks
@@ -15,11 +14,8 @@ const Footer       = dynamic(() => import("./components/Footer"));
 export default function Home() {
   return (
     <>
-      <Navbar />
       <main>
-        <div className="z-100">
-          <Hero />
-        </div>
+        <Hero />
         <Allies />
         <Feature />
         <Showcase />

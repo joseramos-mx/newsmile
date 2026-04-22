@@ -11,7 +11,7 @@ export default function Feature() {
     <section
       ref={ref}
       style={{
-        background: "var(--ivory)",
+        background: "black",
         padding: "5rem clamp(1rem, 4vw, 3rem)",
         overflow: "hidden",
       }}

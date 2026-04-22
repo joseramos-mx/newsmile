@@ -1,188 +1,249 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import Navbar from "./Navbar";
 
-const ease = [0.22, 1, 0.36, 1] as const;
+/* ── FadeIn ─────────────────────────────────────────────────── */
+function FadeIn({
+  children,
+  delay = 0,
+  duration = 1000,
+  className = "",
+  style,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  duration?: number;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  const [visible, setVisible] = useState(false);
 
+  useEffect(() => {
+    const t = setTimeout(() => setVisible(true), delay);
+    return () => clearTimeout(t);
+  }, [delay]);
+
+  return (
+    <div
+      className={`transition-opacity ${className}`}
+      style={{ opacity: visible ? 1 : 0, transitionDuration: `${duration}ms`, ...style }}
+    >
+      {children}
+    </div>
+  );
+}
+
+/* ── AnimatedHeading ────────────────────────────────────────── */
+function AnimatedHeading({
+  text,
+  className = "",
+  style,
+}: {
+  text: string;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  const [started, setStarted] = useState(false);
+  const charDelay = 30;
+
+  useEffect(() => {
+    const t = setTimeout(() => setStarted(true), 200);
+    return () => clearTimeout(t);
+  }, []);
+
+  const lines = text.split("\n");
+  let globalIndex = 0;
+
+  return (
+    <h1
+      className={className}
+      style={{ letterSpacing: "-0.04em", ...style }}
+    >
+      {lines.map((line, lineIndex) => {
+        const chars = line.split("");
+        return (
+          <span key={lineIndex} style={{ display: "block" }}>
+            {chars.map((char) => {
+              const delay = globalIndex++ * charDelay;
+              return (
+                <span
+                  key={delay}
+                  style={{
+                    display: "inline-block",
+                    opacity: started ? 1 : 0,
+                    transform: started ? "translateX(0)" : "translateX(-18px)",
+                    transition: `opacity 500ms ${delay}ms, transform 500ms ${delay}ms`,
+                  }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              );
+            })}
+          </span>
+        );
+      })}
+    </h1>
+  );
+}
+
+/* ── Hero ───────────────────────────────────────────────────── */
 export default function Hero() {
   return (
     <section
       style={{
-        fontFamily: "var(--font-jakarta), 'Plus Jakarta Sans', sans-serif",
         position: "relative",
         width: "100%",
         height: "100vh",
         overflow: "hidden",
-        /* Deep dark base — matches reference */
-        background: "radial-gradient(ellipse 120% 90% at 50% 100%, #0E1018 0%, #060709 55%, #030406 100%)",
+        background: "#000",
+        fontFamily: "var(--font-inter), Inter, sans-serif",
       }}
     >
-      {/* ── Ambient glow layers ─────────────────────────────── */}
-
-      {/* Wide soft silver halo behind the icon */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          zIndex: 1,
-          bottom: "-5%",
-          left: 0,
-          right: 0,
-          margin: "0 auto",
-          width: "80%",
-          height: "70%",
-          background:
-            "radial-gradient(ellipse at 50% 85%, rgba(155,162,178,0.13) 0%, rgba(100,110,130,0.06) 45%, transparent 70%)",
-        }}
+      {/* Background image — NO overlay whatsoever */}
+      <Image
+        src="/herobg.jpeg"
+        alt=""
+        fill
+        priority
+        quality={100}
+        style={{ objectFit: "cover", zIndex: 0 }}
+        sizes="100vw"
       />
 
-      {/* Tight bright core glow right under the icon */}
+      {/* Bottom gradient — seamless transition to next section */}
       <div
-        className="absolute pointer-events-none"
-        style={{
-          zIndex: 1,
-          bottom: "8%",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "42%",
-          height: "28%",
-          background:
-            "radial-gradient(ellipse at 50% 100%, rgba(200,205,215,0.11) 0%, transparent 65%)",
-          filter: "blur(18px)",
-        }}
-      />
-
-      {/* ── Newsmile icon PNG (transparent bg) ──────────────── */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.1, delay: 0.1, ease }}
         style={{
           position: "absolute",
-          zIndex: 2,
-          bottom: "-4%",
+          bottom: 0,
           left: 0,
           right: 0,
-          margin: "0 auto",
-          width: "min(58%, 580px)",
-        }}
-      >
-        <Image
-          src="/iconglow.svg"
-          alt="NewSmile"
-          width={800}
-          height={800}
-          priority
-          quality={100}
-          style={{ width: "100%", height: "auto", display: "block" }}
-        />
-      </motion.div>
-
-      {/* Bottom gradient — dark hero → ivory Allies */}
-      <div
-        className="absolute bottom-0 left-0 right-0 pointer-events-none"
-        style={{
-          zIndex: 10,
-          height: "45%",
-          background:
-            "linear-gradient(to bottom, transparent 0%, rgba(5,6,8,0.7) 40%, #070707 100%)",
+          height: "35%",
+          background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 50%, #000 100%)",
+          zIndex: 2,
+          pointerEvents: "none",
         }}
       />
 
-      {/* ── Text content — upper center ──────────────────────── */}
+      {/* Full-height layout container */}
       <div
-        className="absolute inset-0 flex flex-col items-center"
-        style={{ zIndex: 4, paddingTop: "clamp(5.5rem, 12vh, 9rem)" }}
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 3,
+          display: "flex",
+          flexDirection: "column",
+        }}
       >
-        <motion.h1
-          initial={{ opacity: 0, y: 22 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.95, ease }}
-          style={{
-            fontSize: "clamp(2.4rem, 6.5vw, 5.5rem)",
-            fontWeight: 700,
-            color: "#ffffff",
-            lineHeight: 1.05,
-            letterSpacing: "-0.03em",
-            margin: "0 0 2rem",
-            textAlign: "center",
-            maxWidth: "20ch",
-            padding: "0 1.5rem",
-          }}
-        >
-          <span style={{ fontWeight: 300, color: "rgba(255,255,255,0.80)" }}>
-            Arte protésico
-          </span>
-          <br />
-          al más alto nivel.
-        </motion.h1>
+        <Navbar />
 
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease }}
+        {/* ── Hero content — pushed to bottom ───────────────── */}
+        <div
           style={{
+            flex: 1,
             display: "flex",
-            gap: "0.65rem",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            padding: "0 1.5rem",
+            flexDirection: "column",
+            justifyContent: "flex-end",
+            padding: "0 4rem 4rem",
           }}
         >
-          <button
+          <div
             style={{
-              padding: "0.7rem 1.6rem",
-              borderRadius: "8px",
-              background: "#f0ece6",
-              color: "#1F2C43",
-              border: "none",
-              fontSize: "0.8rem",
-              fontWeight: 600,
-              letterSpacing: "0.02em",
-              cursor: "pointer",
-              fontFamily: "inherit",
-              transition: "background 0.2s, transform 0.18s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#ffffff";
-              e.currentTarget.style.transform = "translateY(-2px)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "#f0ece6";
-              e.currentTarget.style.transform = "translateY(0)";
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              alignItems: "end",
+              gap: "2rem",
             }}
           >
-            Solicitar cotización
-          </button>
+            {/* Left column */}
+            <div>
+              <AnimatedHeading
+                text={"Shaping tomorrow\nwith vision and action."}
+                style={{
+                  fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
+                  fontWeight: 400,
+                  color: "#fff",
+                  lineHeight: 1.05,
+                  letterSpacing: "-0.04em",
+                  marginBottom: "1rem",
+                }}
+              />
 
-          <button
-            style={{
-              padding: "0.7rem 1.6rem",
-              borderRadius: "8px",
-              background: "rgba(255,255,255,0.05)",
-              color: "rgba(255,255,255,0.72)",
-              border: "1px solid rgba(255,255,255,0.15)",
-              fontSize: "0.8rem",
-              fontWeight: 400,
-              letterSpacing: "0.02em",
-              cursor: "pointer",
-              fontFamily: "inherit",
-              transition: "border-color 0.2s, color 0.2s, transform 0.18s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)";
-              e.currentTarget.style.color = "#fff";
-              e.currentTarget.style.transform = "translateY(-2px)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
-              e.currentTarget.style.color = "rgba(255,255,255,0.72)";
-              e.currentTarget.style.transform = "translateY(0)";
-            }}
-          >
-            Ver trabajos
-          </button>
-        </motion.div>
+              <FadeIn delay={800} duration={1000}>
+                <p style={{ fontSize: "1.125rem", color: "#d1d5db", marginBottom: "1.25rem" }}>
+                  We back visionaries and craft ventures that define what comes next.
+                </p>
+              </FadeIn>
+
+              <FadeIn delay={1200} duration={1000}>
+                <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "1rem" }}>
+                  <button
+                    style={{
+                      background: "#fff",
+                      color: "#000",
+                      padding: "0.75rem 2rem",
+                      borderRadius: "0.5rem",
+                      fontWeight: 500,
+                      border: "none",
+                      cursor: "pointer",
+                      fontSize: "0.9rem",
+                      transition: "background 0.2s",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = "#f3f4f6")}
+                    onMouseLeave={(e) => (e.currentTarget.style.background = "#fff")}
+                  >
+                    Cotizar Proyecto
+                  </button>
+                  <button
+                    className="liquid-glass"
+                    style={{
+                      color: "#fff",
+                      padding: "0.75rem 2rem",
+                      borderRadius: "0.5rem",
+                      fontWeight: 500,
+                      border: "1px solid rgba(255,255,255,0.2)",
+                      cursor: "pointer",
+                      fontSize: "0.9rem",
+                      transition: "background 0.2s, color 0.2s",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "#fff";
+                      e.currentTarget.style.color = "#000";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "";
+                      e.currentTarget.style.color = "#fff";
+                    }}
+                  >
+                    Ver trabajos
+                  </button>
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* Right column — tag */}
+            <FadeIn
+              delay={1400}
+              duration={1000}
+              style={{ display: "flex", alignItems: "flex-end", justifyContent: "flex-end" }}
+            >
+              <div
+                className="liquid-glass backdrop-blur-xl"
+                style={{
+                  border: "1px solid rgba(255,255,255,0.2)",
+                  padding: "0.75rem 1.5rem",
+                  borderRadius: "0.75rem",
+                }}
+              >
+                <span style={{ fontSize: "clamp(1.125rem, 2vw, 1.5rem)", fontWeight: 300, color: "#fff" }}>
+                  Investing. Building. Advisory.
+                </span>
+              </div>
+            </FadeIn>
+
+          </div>
+        </div>
       </div>
     </section>
   );

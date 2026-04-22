@@ -121,45 +121,9 @@ export default function Allies() {
     <section
       ref={ref}
       id="allies"
-      style={{
-        position: "relative",
-        background: `linear-gradient(to bottom,
-          #070707 0%,   #070707 22%,
-          #111110 32%,  #2a2824 44%,
-          #6b6660 56%,  #b8b4ae 68%,
-          #dedad5 78%,  #edeae6 86%,
-          #f5f3f0 92%,  #FAF7F3 100%
-        )`,
-        overflow: "hidden",
-        padding: "3.5rem 0 14rem",
-      }}
+      className="bg-black"
     >
-      {/* Label */}
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.55 }}
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto 2rem",
-          padding: "0 2rem",
-        }}
-      >
-        <p style={{
-          fontSize: "0.65rem",
-          fontWeight: 600,
-          letterSpacing: "0.14em",
-          textTransform: "uppercase",
-          color: "rgba(255,255,255,0.4)",
-          display: "flex",
-          alignItems: "center",
-          gap: "0.75rem",
-          margin: 0,
-        }}>
-          <span style={{ display: "inline-block", width: "18px", height: "1px", background: "rgba(255,255,255,0.3)" }} />
-          Respaldados por certificaciones nacionales e internacionales
-        </p>
-      </motion.div>
+
 
       {/* Marquee */}
       <motion.div
