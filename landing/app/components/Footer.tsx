@@ -105,7 +105,7 @@ export default function Footer() {
         src="/newsmile text.svg"
         alt=""
         aria-hidden="true"
-        className="block w-[110%] -ml-[5%] opacity-[0.07] select-none pointer-events-none invert"
+        className="block w-[100%] mx-auto opacity-[0.7] select-none pointer-events-none"
       />
 
     </footer>
