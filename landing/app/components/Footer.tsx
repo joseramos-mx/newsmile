@@ -1,138 +1,109 @@
 "use client";
 
-import Image from "next/image";
-import { InstagramLogo, FacebookLogo, LinkedinLogo, WhatsappLogo } from "@phosphor-icons/react";
+const pages = ["Historia", "Servicios", "Tecnología", "Certificaciones", "Contáctanos"];
+const social = ["Instagram", "Facebook", "LinkedIn", "WhatsApp"];
 
-const footerLinks = {
-  Servicios: ["Alta Estética Cerámica", "Rehabilitación Bucodental", "Implantología Protésica", "Diseño de Sonrisa Digital", "Consultoría Clínica"],
-  Empresa: ["Sobre NewSmile", "Certificaciones", "Tecnología CAD/CAM", "Kulzer México"],
-  Legal: ["Política de privacidad", "Términos de servicio", "Garantía 5 años", "Norma ISO 9000"],
+const linkStyle: React.CSSProperties = {
+  fontSize: "0.95rem",
+  color: "rgba(250,247,243,0.65)",
+  textDecoration: "none",
+  transition: "color 0.2s",
+  display: "inline-block",
 };
 
-const socials = [
-  { label: "Instagram", Icon: InstagramLogo },
-  { label: "Facebook", Icon: FacebookLogo },
-  { label: "LinkedIn", Icon: LinkedinLogo },
-  { label: "WhatsApp", Icon: WhatsappLogo },
-];
+function NavLink({ label }: { label: string }) {
+  return (
+    <li>
+      <a
+        href="#"
+        style={linkStyle}
+        onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#fff"; }}
+        onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(250,247,243,0.65)"; }}
+      >
+        {label}
+      </a>
+    </li>
+  );
+}
+
+const colHead: React.CSSProperties = {
+  fontSize: "0.6rem",
+  fontWeight: 700,
+  letterSpacing: "0.16em",
+  textTransform: "uppercase",
+  color: "rgba(250,247,243,0.28)",
+  marginBottom: "1.25rem",
+};
 
 export default function Footer() {
   return (
-    <footer style={{ background: "var(--near-black)" }}>
-      {/* Top section */}
+    <footer style={{ background: "var(--near-black)", overflow: "hidden" }}>
+
+      {/* ── Main grid ── */}
       <div
+        className="footer-top"
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
-          padding: "5rem 2rem 4rem",
+          padding: "5rem clamp(1.5rem, 4vw, 3rem) 3rem",
           display: "grid",
-          gridTemplateColumns: "2fr 1fr 1fr 1fr",
-          gap: "3rem",
+          gridTemplateColumns: "2fr 1fr 1fr",
+          gap: "3rem 4rem",
         }}
-        className="footer-grid"
       >
-        {/* Brand */}
+        {/* Pages */}
         <div>
-          <Image
-            src="/logo.svg"
-            alt="NewSmile Laboratorio Dental"
-            width={145}
-            height={25}
-            style={{ height: "25px", width: "auto", filter: "invert(1)", opacity: 0.85, marginBottom: "1.5rem" }}
-          />
-
-          <p
-            style={{
-              fontSize: "0.875rem",
-              lineHeight: 1.75,
-              color: "rgba(250,247,243,0.38)",
-              fontWeight: 300,
-              maxWidth: "280px",
-              marginBottom: "2rem",
-            }}
-          >
-            Laboratorio dental en Toluca, México. Especialistas en alta estética cerámica y rehabilitación bucodental. 10+ años en el mercado.
-          </p>
-
-          {/* Social icons */}
-          <div style={{ display: "flex", gap: "0.6rem" }}>
-            {socials.map((s) => (
-              <a
-                key={s.label}
-                href="#"
-                aria-label={s.label}
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "12px",
-                  background: "rgba(250,247,243,0.05)",
-                  border: "1px solid rgba(250,247,243,0.08)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  textDecoration: "none",
-                  transition: "background 0.2s, border-color 0.2s, transform 0.2s",
-                }}
-                onMouseEnter={(e) => {
-                  const a = e.currentTarget as HTMLAnchorElement;
-                  a.style.background = "rgba(37,89,88,0.25)";
-                  a.style.borderColor = "rgba(37,89,88,0.4)";
-                  a.style.transform = "translateY(-2px)";
-                }}
-                onMouseLeave={(e) => {
-                  const a = e.currentTarget as HTMLAnchorElement;
-                  a.style.background = "rgba(250,247,243,0.05)";
-                  a.style.borderColor = "rgba(250,247,243,0.08)";
-                  a.style.transform = "translateY(0)";
-                }}
-              >
-                <s.Icon size={18} color="rgba(250,247,243,0.55)" weight="regular" />
-              </a>
-            ))}
-          </div>
+          <p style={colHead}>Páginas</p>
+          <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.65rem" }}>
+            {pages.map((l) => <NavLink key={l} label={l} />)}
+          </ul>
         </div>
 
-        {/* Link columns */}
-        {Object.entries(footerLinks).map(([cat, links]) => (
-          <div key={cat}>
-            <h4
-              style={{
-                fontSize: "0.65rem",
-                fontWeight: 700,
-                letterSpacing: "0.14em",
-                textTransform: "uppercase",
-                color: "var(--solar)",
-                marginBottom: "1.5rem",
-              }}
-            >
-              {cat}
-            </h4>
-            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-              {links.map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
-                    style={{
-                      fontSize: "0.85rem",
-                      color: "rgba(250,247,243,0.38)",
-                      textDecoration: "none",
-                      fontWeight: 300,
-                      transition: "color 0.2s",
-                    }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(250,247,243,0.8)"; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(250,247,243,0.38)"; }}
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {/* Social */}
+        <div>
+          <p style={colHead}>Social</p>
+          <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.65rem" }}>
+            {social.map((l) => <NavLink key={l} label={l} />)}
+          </ul>
+        </div>
       </div>
 
-      {/* Bottom bar */}
-      <div style={{ borderTop: "1px solid rgba(250,247,243,0.06)", padding: "1.5rem 2rem" }}>
+      {/* ── Divider ── */}
+      <div style={{ borderTop: "1px solid rgba(250,247,243,0.07)", margin: "0 clamp(1.5rem, 4vw, 3rem)" }} />
+
+      {/* ── Locations row ── */}
+      <div
+        className="footer-locations"
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "2.5rem clamp(1.5rem, 4vw, 3rem) 3rem",
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: "2rem",
+        }}
+      >
+        <div>
+          <p style={colHead}>Ubicación</p>
+          <p style={{ fontSize: "0.9rem", fontWeight: 500, color: "rgba(250,247,243,0.8)", marginBottom: "0.35rem" }}>Toluca, México</p>
+          <p style={{ fontSize: "0.8rem", color: "rgba(250,247,243,0.32)", lineHeight: 1.7 }}>
+            C. Manuel J. Clouthier 209<br />Col. Cuauhtémoc, C.P. 50040
+          </p>
+        </div>
+        <div>
+          <p style={colHead}>Horario</p>
+          <p style={{ fontSize: "0.9rem", fontWeight: 500, color: "rgba(250,247,243,0.8)", marginBottom: "0.35rem" }}>Lun – Vie</p>
+          <p style={{ fontSize: "0.8rem", color: "rgba(250,247,243,0.32)", lineHeight: 1.7 }}>9:00 – 18:00 hrs</p>
+        </div>
+        <div>
+          <p style={colHead}>Contacto</p>
+          <p style={{ fontSize: "0.9rem", fontWeight: 500, color: "rgba(250,247,243,0.8)", marginBottom: "0.35rem" }}>hola@newsmile.mx</p>
+          <p style={{ fontSize: "0.8rem", color: "rgba(250,247,243,0.32)", lineHeight: 1.7 }}>+52 (722) 000 0000</p>
+        </div>
+      </div>
+
+      {/* ── Bottom bar ── */}
+      <div style={{ borderTop: "1px solid rgba(250,247,243,0.07)", padding: "1.25rem clamp(1.5rem, 4vw, 3rem)" }}>
         <div
           style={{
             maxWidth: "1200px",
@@ -140,58 +111,57 @@ export default function Footer() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            gap: "1rem",
             flexWrap: "wrap",
+            gap: "0.75rem",
           }}
         >
-          <span style={{ fontSize: "0.75rem", color: "rgba(250,247,243,0.2)", fontWeight: 300 }}>
-            © {new Date().getFullYear()} New Smile Dental Lab · Toluca, México. Todos los derechos reservados.
+          <span style={{ fontSize: "0.72rem", color: "rgba(250,247,243,0.2)", letterSpacing: "0.04em" }}>
+            {new Date().getFullYear()} · New Smile Dental Lab · Toluca, México
           </span>
-
-          {/* Pantone color swatches as brand mark */}
-          <div style={{ display: "flex", gap: "4px", alignItems: "center" }}>
-            {["#F6C289", "#B2B6AC", "#76849B", "#255958", "#1F2C43"].map((c) => (
-              <div
-                key={c}
-                style={{
-                  width: "10px",
-                  height: "10px",
-                  borderRadius: "50%",
-                  background: c,
-                  opacity: 0.6,
-                }}
-              />
-            ))}
-          </div>
-
-          <div style={{ display: "flex", gap: "1.5rem" }}>
-            {["Privacidad", "Términos", "Garantía"].map((item) => (
-              <a
-                key={item}
-                href="#"
-                style={{
-                  fontSize: "0.72rem",
-                  color: "rgba(250,247,243,0.18)",
-                  textDecoration: "none",
-                  letterSpacing: "0.03em",
-                  transition: "color 0.2s",
-                }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(250,247,243,0.5)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(250,247,243,0.18)"; }}
-              >
-                {item}
-              </a>
-            ))}
-          </div>
+          <a
+            href="#"
+            style={{ fontSize: "0.72rem", color: "rgba(250,247,243,0.2)", textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(250,247,243,0.5)"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(250,247,243,0.2)"; }}
+          >
+            Política de privacidad
+          </a>
+          <a
+            href="mailto:hola@newsmile.mx"
+            style={{ fontSize: "0.72rem", color: "rgba(250,247,243,0.2)", textDecoration: "none" }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(250,247,243,0.5)"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(250,247,243,0.2)"; }}
+          >
+            hola@newsmile.mx
+          </a>
         </div>
       </div>
 
-      <style jsx>{`
+      {/* ── Oversized brand watermark ── */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/newsmile text.svg"
+        alt=""
+        aria-hidden="true"
+        style={{
+          display: "block",
+          width: "110%",
+          marginLeft: "-5%",
+          opacity: 0.07,
+          userSelect: "none",
+          pointerEvents: "none",
+          filter: "invert(1)",
+        }}
+      />
+
+      <style>{`
         @media (max-width: 768px) {
-          .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 2rem !important; }
+          .footer-top { grid-template-columns: 1fr 1fr !important; }
+          .footer-locations { grid-template-columns: 1fr 1fr !important; }
         }
         @media (max-width: 480px) {
-          .footer-grid { grid-template-columns: 1fr !important; }
+          .footer-top { grid-template-columns: 1fr !important; }
+          .footer-locations { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </footer>
