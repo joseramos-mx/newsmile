@@ -7,22 +7,22 @@ const services = [
   {
     title: "Alta Estética\nCerámica",
     description: "Coronas, puentes y restauraciones cerámicas con caracterización avanzada",
-    background: "linear-gradient(160deg, #3a2a1e 0%, #6b4c35 100%)",
+    image: "/images/img5.jpeg",
   },
   {
     title: "Rehabilitación\nBucodental",
     description: "Consultoría y acompañamiento en diagnóstico y tratamiento integral",
-    background: "linear-gradient(160deg, #1e2e2a 0%, #2d5250 100%)",
+    image: "/images/img1.jpeg",
   },
   {
     title: "Implantología\nProtésica",
     description: "Sobrestructuras y prótesis sobre implantes de alta complejidad",
-    background: "linear-gradient(160deg, #1e2430 0%, #334160 100%)",
+    image: "/images/img20.jpeg",
   },
   {
     title: "Diseño de\nSonrisa Digital",
     description: "Escáner intraoral y flujo digital completo, sin impresiones",
-    background: "linear-gradient(160deg, #2a2218 0%, #5a4a30 100%)",
+    image: "/images/img15.jpeg",
   },
 ];
 
@@ -64,7 +64,9 @@ function ServiceCard({
         style={{
           position: "absolute",
           inset: 0,
-          background: service.background,
+          backgroundImage: `url('${service.image}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
           transition: "transform 0.55s ease",
         }}
       />

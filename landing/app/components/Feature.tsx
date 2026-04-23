@@ -65,10 +65,9 @@ export default function Feature() {
               style={{
                 position: "absolute",
                 inset: 0,
-                backgroundImage: "url('/feature-left.jpg')",
+                backgroundImage: "url('/images/img37.jpeg')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                background: "linear-gradient(135deg, #2a1f1a 0%, #4a3328 100%)",
               }}
             />
             <div
@@ -131,7 +130,7 @@ export default function Feature() {
           {/* ── Right panel ── */}
           <div className="feature-right-panel" style={{ position: "relative", overflow: "hidden" }}>
             <div style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: "3px", background: "var(--ivory)", zIndex: 2 }} />
-            <div style={{ position: "absolute", inset: 0, backgroundImage: "url('/feature-right.jpg')", backgroundSize: "cover", backgroundPosition: "center", background: "linear-gradient(135deg, #c8b8a8 0%, #e0d0c0 100%)" }} />
+            <div style={{ position: "absolute", inset: 0, backgroundImage: "url('/images/img36.jpeg')", backgroundSize: "cover", backgroundPosition: "center" }} />
           </div>
         </motion.div>
       </div>
