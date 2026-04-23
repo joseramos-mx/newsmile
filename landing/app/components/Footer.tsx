@@ -166,6 +166,18 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* ── Powered by ── */}
+      <div className="text-center py-3">
+        <a
+          href="https://rmsindustries.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[0.65rem] text-white/20 no-underline tracking-[0.08em] uppercase hover:text-white/40 transition-colors duration-200"
+        >
+          Powered by RMS
+        </a>
+      </div>
+
       {/* ── Oversized brand watermark ── */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
