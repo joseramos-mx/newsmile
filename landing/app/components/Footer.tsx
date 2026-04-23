@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 const pages = ["Historia", "Servicios", "Tecnología", "Certificaciones", "Contáctanos"];
 const social = ["Instagram", "Facebook", "LinkedIn", "WhatsApp"];
 
@@ -21,16 +23,78 @@ function NavLink({ label }: { label: string }) {
   );
 }
 
+function NewsletterWidget() {
+  const [email, setEmail] = useState("");
+
+  return (
+    <div>
+      <h3 className="text-[1.1rem] font-semibold text-white mb-2">Mantente al día</h3>
+      <p className="text-[0.82rem] text-white/45 leading-relaxed mb-5">
+        Recibe novedades sobre técnicas, materiales y casos clínicos de alta especialidad.
+      </p>
+
+      {/* Input + button */}
+      <div className="flex rounded-lg overflow-hidden border border-white/15 mb-3">
+        <input
+          type="email"
+          placeholder="Correo electrónico"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="flex-1 bg-white/5 text-white/70 text-[0.82rem] px-4 py-3 outline-none placeholder:text-white/25 min-w-0"
+        />
+        <button className="bg-white text-[#1F2C43] text-[0.78rem] font-semibold px-4 py-3 shrink-0 hover:bg-white/90 transition-colors duration-200">
+          Suscribirse
+        </button>
+      </div>
+
+      {/* Privacy note */}
+      <p className="text-[0.7rem] text-white/25 leading-relaxed mb-6">
+        ✦ Al suscribirte aceptas nuestra{" "}
+        <a href="#" className="text-white/40 underline hover:text-white/60 transition-colors duration-200">
+          Política de privacidad
+        </a>
+        .
+      </p>
+
+      {/* Divider */}
+      <div className="border-t border-white/10 mb-5" />
+
+      {/* Schedule a call */}
+      <p className="text-[0.78rem] font-semibold text-white/55 mb-3">Agenda una consulta:</p>
+      <a
+        href="#form"
+        onClick={(e) => { e.preventDefault(); document.querySelector("#form")?.scrollIntoView({ behavior: "smooth" }); }}
+        className="flex items-center gap-3 border border-white/12 rounded-lg px-4 py-3 no-underline group hover:border-white/25 transition-colors duration-200"
+      >
+        {/* Avatar placeholder */}
+        <div className="w-10 h-10 rounded-lg bg-[#255958] shrink-0 flex items-center justify-center text-white text-[0.75rem] font-bold">
+          NS
+        </div>
+        <div className="flex-1 min-w-0">
+          <p className="text-[0.85rem] font-medium text-white/80 leading-tight">New Smile Lab</p>
+          <p className="text-[0.72rem] text-white/35 leading-tight">Especialista en prótesis</p>
+        </div>
+        {/* Arrow */}
+        <div className="w-8 h-8 border border-white/15 rounded-md flex items-center justify-center shrink-0 group-hover:border-white/35 transition-colors duration-200">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 7h8M7 3l4 4-4 4" stroke="rgba(255,255,255,0.55)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+      </a>
+    </div>
+  );
+}
+
 export default function Footer() {
   return (
-    <footer className="bg-[#1F2C43] overflow-hidden">
+    <footer className="bg-[#76849b] overflow-hidden">
 
       {/* ── Main grid ── */}
       <div className="
         max-w-[1200px] mx-auto
         px-[clamp(1.5rem,4vw,3rem)] pt-20 pb-12
         grid gap-y-12 gap-x-16
-        grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]
+        grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.6fr]
       ">
         {/* Pages */}
         <div>
@@ -47,6 +111,9 @@ export default function Footer() {
             {social.map((l) => <NavLink key={l} label={l} />)}
           </ul>
         </div>
+
+        {/* Newsletter + Schedule */}
+        <NewsletterWidget />
       </div>
 
       {/* ── Divider ── */}
