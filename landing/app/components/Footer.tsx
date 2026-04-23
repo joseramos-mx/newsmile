@@ -56,32 +56,7 @@ function NewsletterWidget() {
         .
       </p>
 
-      {/* Divider */}
-      <div className="border-t border-white/10 mb-5" />
-
-      {/* Schedule a call */}
-      <p className="text-[0.78rem] font-semibold text-white/55 mb-3">Agenda una consulta:</p>
-      <a
-        href="#form"
-        onClick={(e) => { e.preventDefault(); document.querySelector("#form")?.scrollIntoView({ behavior: "smooth" }); }}
-        className="flex items-center gap-3 border border-white/12 rounded-lg px-4 py-3 no-underline group hover:border-white/25 transition-colors duration-200"
-      >
-        {/* Avatar placeholder */}
-        <div className="w-10 h-10 rounded-lg bg-[#255958] shrink-0 flex items-center justify-center text-white text-[0.75rem] font-bold">
-          NS
-        </div>
-        <div className="flex-1 min-w-0">
-          <p className="text-[0.85rem] font-medium text-white/80 leading-tight">New Smile Lab</p>
-          <p className="text-[0.72rem] text-white/35 leading-tight">Especialista en prótesis</p>
-        </div>
-        {/* Arrow */}
-        <div className="w-8 h-8 border border-white/15 rounded-md flex items-center justify-center shrink-0 group-hover:border-white/35 transition-colors duration-200">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8M7 3l4 4-4 4" stroke="rgba(255,255,255,0.55)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
-      </a>
-    </div>
+      </div>
   );
 }
 
@@ -163,19 +138,15 @@ export default function Footer() {
           >
             hola@newsmile.mx
           </a>
+          <a
+            href="https://rmsindustries.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[0.72rem] text-white/20 no-underline tracking-[0.08em] uppercase hover:text-white/50 transition-colors duration-200"
+          >
+            Powered by RMS
+          </a>
         </div>
-      </div>
-
-      {/* ── Powered by ── */}
-      <div className="text-center py-3">
-        <a
-          href="https://rmsindustries.io"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[0.65rem] text-white/20 no-underline tracking-[0.08em] uppercase hover:text-white/40 transition-colors duration-200"
-        >
-          Powered by RMS
-        </a>
       </div>
 
       {/* ── Oversized brand watermark ── */}
