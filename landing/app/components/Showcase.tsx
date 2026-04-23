@@ -7,7 +7,7 @@ const services = [
   {
     title: "Alta Estética\nCerámica",
     description: "Coronas, puentes y restauraciones cerámicas con caracterización avanzada",
-    image: "/images/img5.jpeg",
+    image: "/images/img9.jpeg",
   },
   {
     title: "Rehabilitación\nBucodental",
