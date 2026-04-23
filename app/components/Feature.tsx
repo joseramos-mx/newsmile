@@ -129,7 +129,7 @@ export default function Feature() {
 
           {/* ── Right panel ── */}
           <div className="feature-right-panel" style={{ position: "relative", overflow: "hidden" }}>
-            <div style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: "3px", background: "var(--ivory)", zIndex: 2 }} />
+            <div style={{ position: "absolute", top: 0, bottom: 0, left: 0, background: "var(--ivory)", zIndex: 2 }} />
             <div style={{ position: "absolute", inset: 0, backgroundImage: "url('/images/img38.jpeg')", backgroundSize: "cover", backgroundPosition: "right center" }} />
           </div>
         </motion.div>

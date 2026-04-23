@@ -121,16 +121,19 @@ export default function Allies() {
     <section
       ref={ref}
       id="allies"
-      className="bg-black"
+      className="relative bg-black py-12 md:py-16"
     >
 
-
-      {/* Marquee */}
+      {/* Marquee with left/right edge fade */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 0.7, delay: 0.15 }}
-        style={{ overflow: "hidden", width: "100%" }}
+        className="relative overflow-hidden w-full"
+        style={{
+          maskImage: "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+        }}
       >
         <div
           className="marquee-track"
