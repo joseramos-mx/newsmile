@@ -18,9 +18,8 @@ export default function Home() {
       <main>
         <Hero />
         <Allies />
-        <Services />
         <Feature />
-        <Showcase />
+        <Services />
         <Benefits />
         <Testimonials />
         <CTA />
