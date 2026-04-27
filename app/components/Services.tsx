@@ -3,6 +3,18 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 
+const galleryImages = [
+  "/images/img9.jpeg",
+  "/images/img7.jpeg",
+  "/images/img8.jpeg",
+  "/images/img15.jpeg",
+  "/images/img2.jpeg",
+  "/images/img37.jpeg",
+  "/images/img3.jpeg",
+  "/images/img5.jpeg",
+];
+const galleryTrack = [...galleryImages, ...galleryImages];
+
 const services = [
   {
     id: "01",
@@ -158,8 +170,9 @@ export default function Services() {
       id="servicios"
       style={{
         background: "#000",
-        padding: "clamp(4rem, 8vw, 7rem) clamp(1rem, 4vw, 3rem)",
-        overflow: "hidden",
+        paddingTop: "clamp(4rem, 8vw, 7rem)",
+        paddingBottom: 0,
+        overflow: "visible",
       }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
@@ -206,6 +219,48 @@ export default function Services() {
         </div>
 
       </div>
+
+      {/* ── Image gallery marquee ── */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 0.8, delay: 0.7 }}
+        style={{
+          marginTop: "clamp(3rem, 6vw, 5rem)",
+          overflow: "hidden",
+          maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+        }}
+      >
+        <div
+          className="marquee-track"
+          style={{ display: "inline-flex", gap: "0.5rem", width: "max-content" }}
+        >
+          {galleryTrack.map((src, i) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={i}
+              src={src}
+              alt=""
+              aria-hidden="true"
+              style={{
+                height: "clamp(140px, 18vw, 220px)",
+                width: "auto",
+                aspectRatio: "1 / 1",
+                objectFit: "cover",
+                borderRadius: "8px",
+                flexShrink: 0,
+                display: "block",
+                filter: "brightness(0.82) saturate(0.85)",
+                transition: "filter 0.3s ease",
+              }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLImageElement).style.filter = "brightness(1) saturate(1)"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLImageElement).style.filter = "brightness(0.82) saturate(0.85)"; }}
+            />
+          ))}
+        </div>
+      </motion.div>
+
     </section>
   );
 }
