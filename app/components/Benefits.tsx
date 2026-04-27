@@ -2,32 +2,80 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight } from "@phosphor-icons/react";
+// Inline SVGs — no external icon library needed
+const icons: Record<string, React.ReactNode> = {
+  consultoria: (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M9 1.5C4.86 1.5 1.5 4.36 1.5 7.875c0 1.71.75 3.27 1.98 4.425L2.25 15l2.97-1.05A8.03 8.03 0 0 0 9 14.25c4.14 0 7.5-2.86 7.5-6.375S13.14 1.5 9 1.5Z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+      <circle cx="6" cy="8" r="0.9" fill="currentColor"/>
+      <circle cx="9" cy="8" r="0.9" fill="currentColor"/>
+      <circle cx="12" cy="8" r="0.9" fill="currentColor"/>
+    </svg>
+  ),
+  velocidad: (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M9 2.25A6.75 6.75 0 1 1 2.25 9" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+      <path d="M9 5.25V9l2.25 2.25" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M2.25 2.25 5.25 5.25M2.25 5.25h3v-3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  globo: (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <circle cx="9" cy="9" r="7.5" stroke="currentColor" strokeWidth="1.4"/>
+      <path d="M9 1.5C9 1.5 6 5.25 6 9s3 7.5 3 7.5M9 1.5C9 1.5 12 5.25 12 9s-3 7.5-3 7.5" stroke="currentColor" strokeWidth="1.4"/>
+      <path d="M1.5 9h15" stroke="currentColor" strokeWidth="1.4"/>
+    </svg>
+  ),
+  chip: (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <rect x="5.25" y="5.25" width="7.5" height="7.5" rx="1.5" stroke="currentColor" strokeWidth="1.4"/>
+      <path d="M7.5 5.25V3M10.5 5.25V3M7.5 15v-2.25M10.5 15v-2.25M5.25 7.5H3M5.25 10.5H3M15 7.5h-2.25M15 10.5h-2.25" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+      <rect x="7.5" y="7.5" width="3" height="3" rx="0.5" fill="currentColor" opacity="0.5"/>
+    </svg>
+  ),
+  estrella: (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M9 1.5 10.854 6.64h5.396l-4.365 3.17 1.668 5.13L9 11.78l-4.553 3.16 1.668-5.13L1.75 6.64h5.396Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
+    </svg>
+  ),
+  escudo: (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M9 1.5 2.25 4.5V9c0 4.14 2.97 7.02 6.75 8.25C12.78 16.02 15.75 13.14 15.75 9V4.5L9 1.5Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
+      <path d="M6 9l2 2 4-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+};
 
 const benefits = [
   {
     title: "Consultoría y acompañamiento en cada caso",
     description: "Materiales, adhesión, protocolo — siempre disponibles.",
+    icon: icons.consultoria,
   },
   {
     title: "Calidad High End en tiempos reducidos",
     description: "Protocolos optimizados para casos de alta especialización.",
+    icon: icons.velocidad,
   },
   {
     title: "Especialización internacional",
     description: "Formados en México, Liechtenstein y Eslovenia.",
+    icon: icons.globo,
   },
   {
     title: "Tecnología de última generación",
     description: "Escáner intraoral e impresión 3D directo en tu consultorio.",
+    icon: icons.chip,
   },
   {
     title: "Alta estética cerámica",
     description: "10+ años reproduciendo translucidez y textura natural.",
+    icon: icons.estrella,
   },
   {
     title: "5 años de garantía · Norma ISO 9000",
     description: "Operación legal, certificada y respaldada por más de una década.",
+    icon: icons.escudo,
   },
 ];
 
@@ -141,7 +189,7 @@ function BenefitRow({
   index,
   inView,
 }: {
-  benefit: { title: string; description: string };
+  benefit: { title: string; description: string; icon: React.ReactNode };
   index: number;
   inView: boolean;
 }) {
@@ -150,25 +198,15 @@ function BenefitRow({
   const handleEnter = () => {
     if (!rowRef.current) return;
     rowRef.current.style.background = "rgba(37,89,88,0.04)";
-    const arrow = rowRef.current.querySelector(".arrow-wrap") as HTMLElement;
-    if (arrow) {
-      arrow.style.background = "var(--arandano)";
-      arrow.style.transform = "translateX(4px)";
-    }
-    const arrowIcon = rowRef.current.querySelector(".arrow-icon") as HTMLElement;
-    if (arrowIcon) arrowIcon.style.color = "white";
+    const wrap = rowRef.current.querySelector(".icon-wrap") as HTMLElement;
+    if (wrap) { wrap.style.background = "var(--arandano)"; wrap.style.color = "white"; }
   };
 
   const handleLeave = () => {
     if (!rowRef.current) return;
     rowRef.current.style.background = "transparent";
-    const arrow = rowRef.current.querySelector(".arrow-wrap") as HTMLElement;
-    if (arrow) {
-      arrow.style.background = "transparent";
-      arrow.style.transform = "translateX(0)";
-    }
-    const arrowIcon = rowRef.current.querySelector(".arrow-icon") as HTMLElement;
-    if (arrowIcon) arrowIcon.style.color = "var(--arandano)";
+    const wrap = rowRef.current.querySelector(".icon-wrap") as HTMLElement;
+    if (wrap) { wrap.style.background = "transparent"; wrap.style.color = "var(--arandano)"; }
   };
 
   return (
@@ -215,26 +253,21 @@ function BenefitRow({
         </div>
 
         <div
-          className="arrow-wrap"
+          className="icon-wrap"
           style={{
-            width: "36px",
-            height: "36px",
+            width: "38px",
+            height: "38px",
             borderRadius: "50%",
             border: "1.5px solid rgba(37,89,88,0.25)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             flexShrink: 0,
-            transition: "background 0.25s, transform 0.25s",
+            color: "var(--arandano)",
+            transition: "background 0.25s, color 0.25s",
           }}
         >
-          <ArrowRight
-            className="arrow-icon"
-            size={15}
-            weight="bold"
-            color="var(--arandano)"
-            style={{ transition: "color 0.25s" }}
-          />
+          {benefit.icon}
         </div>
       </div>
 
