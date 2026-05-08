@@ -11,7 +11,7 @@ const services = [
   },
   {
     title: "Rehabilitación\nBucodental",
-    description: "Consultoría y acompañamiento en diagnóstico y tratamiento integral",
+    description: "Soporte protésico y técnico para tus rehabilitaciones de mayor complejidad",
     image: "/images/img1.jpeg",
   },
   {
@@ -21,7 +21,7 @@ const services = [
   },
   {
     title: "Diseño de\nSonrisa Digital",
-    description: "Escáner intraoral y flujo digital completo, sin impresiones",
+    description: "Compatible con tu escáner intraoral para un flujo digital completo, sin impresiones físicas",
     image: "/images/img15.jpeg",
   },
 ];

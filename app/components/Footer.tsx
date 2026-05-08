@@ -2,8 +2,20 @@
 
 import { useState } from "react";
 
-const pages = ["Historia", "Servicios", "Tecnología", "Certificaciones", "Contáctanos"];
-const social = ["Instagram", "Facebook", "LinkedIn", "WhatsApp"];
+const pages: [string, string][] = [
+  ["Servicios",   "#servicios"],
+  ["Casos",       "#showcase"],
+  ["Beneficios",  "#benefits"],
+  ["Formación",   "#certifications"],
+  ["Testimonios", "#testimonials"],
+  ["Contacto",    "#form"],
+];
+
+const social: [string, string][] = [
+  ["Instagram", "https://www.instagram.com/new_smile.dental_lab"],
+  ["Facebook",  "https://www.facebook.com/JLAANewSmile/"],
+  ["WhatsApp",  "https://wa.me/527225123187"],
+];
 
 function ColHead({ children }: { children: React.ReactNode }) {
   return (
@@ -13,10 +25,16 @@ function ColHead({ children }: { children: React.ReactNode }) {
   );
 }
 
-function NavLink({ label }: { label: string }) {
+function NavLink({ label, href }: { label: string; href: string }) {
+  const external = href.startsWith("http");
   return (
     <li>
-      <a href="#" className="text-[0.95rem] text-white/65 no-underline transition-colors duration-200 hover:text-white">
+      <a
+        href={href}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+        className="text-[0.95rem] text-white/65 no-underline transition-colors duration-200 hover:text-white"
+      >
         {label}
       </a>
     </li>
@@ -33,7 +51,6 @@ function NewsletterWidget() {
         Recibe novedades sobre técnicas, materiales y casos clínicos de alta especialidad.
       </p>
 
-      {/* Input + button */}
       <div className="flex rounded-lg overflow-hidden border border-white/15 mb-3">
         <input
           type="email"
@@ -42,12 +59,11 @@ function NewsletterWidget() {
           onChange={(e) => setEmail(e.target.value)}
           className="flex-1 bg-white/5 text-white/70 text-[0.82rem] px-4 py-3 outline-none placeholder:text-white/25 min-w-0"
         />
-        <button className="bg-white text-[#1F2C43] text-[0.78rem] font-semibold px-4 py-3 shrink-0 hover:bg-white/90 transition-colors duration-200">
+        <button className="bg-white text-[#0f5355] text-[0.78rem] font-semibold px-4 py-3 shrink-0 hover:bg-white/90 transition-colors duration-200">
           Suscribirse
         </button>
       </div>
 
-      {/* Privacy note */}
       <p className="text-[0.7rem] text-white/25 leading-relaxed mb-6">
         ✦ Al suscribirte aceptas nuestra{" "}
         <a href="#" className="text-white/40 underline hover:text-white/60 transition-colors duration-200">
@@ -55,14 +71,13 @@ function NewsletterWidget() {
         </a>
         .
       </p>
-
-      </div>
+    </div>
   );
 }
 
 export default function Footer() {
   return (
-    <footer className="bg-[#76849b] overflow-hidden">
+    <footer className="bg-[#0f5355] overflow-hidden">
 
       {/* ── Main grid ── */}
       <div className="
@@ -75,19 +90,19 @@ export default function Footer() {
         <div>
           <ColHead>Páginas</ColHead>
           <ul className="list-none flex flex-col gap-[0.65rem]">
-            {pages.map((l) => <NavLink key={l} label={l} />)}
+            {pages.map(([l, href]) => <NavLink key={l} label={l} href={href} />)}
           </ul>
         </div>
 
         {/* Social */}
         <div>
-          <ColHead>Social</ColHead>
+          <ColHead>Redes sociales</ColHead>
           <ul className="list-none flex flex-col gap-[0.65rem]">
-            {social.map((l) => <NavLink key={l} label={l} />)}
+            {social.map(([l, href]) => <NavLink key={l} label={l} href={href} />)}
           </ul>
         </div>
 
-        {/* Newsletter + Schedule */}
+        {/* Newsletter */}
         <NewsletterWidget />
       </div>
 
@@ -105,7 +120,7 @@ export default function Footer() {
           <ColHead>Ubicación</ColHead>
           <p className="text-[0.9rem] font-medium text-white/80 mb-[0.35rem]">Toluca, México</p>
           <p className="text-[0.8rem] text-white/30 leading-[1.7]">
-            C. Manuel J. Clouthier 209<br />Col. Cuauhtémoc, C.P. 50040
+            Sebastián Lerdo de Tejada #686<br />Toluca, México, C.P. 50040
           </p>
         </div>
         <div>
@@ -115,8 +130,20 @@ export default function Footer() {
         </div>
         <div>
           <ColHead>Contacto</ColHead>
-          <p className="text-[0.9rem] font-medium text-white/80 mb-[0.35rem]">hola@newsmile.mx</p>
-          <p className="text-[0.8rem] text-white/30 leading-[1.7]">+52 (722) 000 0000</p>
+          <a
+            href="mailto:ns.dental.laboratorio@gmail.com"
+            className="block text-[0.9rem] font-medium text-white/80 mb-[0.35rem] no-underline hover:text-white transition-colors duration-200"
+          >
+            ns.dental.laboratorio@gmail.com
+          </a>
+          <a
+            href="https://wa.me/527225123187"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-[0.8rem] text-white/30 leading-[1.7] no-underline hover:text-white/60 transition-colors duration-200"
+          >
+            +52 722 512 3187
+          </a>
         </div>
       </div>
 
@@ -133,10 +160,10 @@ export default function Footer() {
             Política de privacidad
           </a>
           <a
-            href="mailto:hola@newsmile.mx"
+            href="mailto:ns.dental.laboratorio@gmail.com"
             className="text-[0.72rem] text-white/20 no-underline hover:text-white/50 transition-colors duration-200"
           >
-            hola@newsmile.mx
+            ns.dental.laboratorio@gmail.com
           </a>
           <a
             href="https://rmsindustries.io"

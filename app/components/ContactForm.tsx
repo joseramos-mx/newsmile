@@ -99,9 +99,9 @@ export default function ContactForm() {
                 {/* Contact info — widget-style rows */}
                 <div className="flex flex-col gap-3">
                   {[
-                    { Icon: MapPin,       text: "Toluca, Estado de México" },
-                    { Icon: Envelope,     text: "contacto@newsmilelab.mx" },
-                    { Icon: WhatsappLogo, text: "+52 722 000 0000" },
+                    { Icon: MapPin,       text: "Sebastián Lerdo de Tejada #686, Toluca" },
+                    { Icon: Envelope,     text: "ns.dental.laboratorio@gmail.com" },
+                    { Icon: WhatsappLogo, text: "+52 722 512 3187" },
                   ].map(({ Icon, text }) => (
                     <div key={text} className="flex items-center gap-3 rounded-xl border border-white/6 bg-white/[0.03] px-4 py-3">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#255958]/20">

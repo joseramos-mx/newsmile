@@ -99,8 +99,9 @@ export default function Feature() {
                 Alta especialización técnica protésica y estética, con calidad High&nbsp;End en tiempos reducidos para especialistas rehabilitadores.
               </p>
               <a
-                href="#form"
-                onClick={(e) => { e.preventDefault(); document.querySelector("#form")?.scrollIntoView({ behavior: "smooth" }); }}
+                href="https://wa.me/527225123187?text=Hola%2C%20me%20interesa%20cotizar%20un%20caso%20con%20New%20Smile%20Dental%20Lab."
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   display: "inline-block",
                   padding: "0.6rem 1.2rem",

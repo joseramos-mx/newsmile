@@ -64,17 +64,17 @@ const benefits = [
   },
   {
     title: "Tecnología de última generación",
-    description: "Escáner intraoral e impresión 3D directo en tu consultorio.",
+    description: "Si cuentas con escáner intraoral, integramos tu flujo digital. Impresión 3D de precisión en nuestro laboratorio.",
     icon: icons.chip,
   },
   {
     title: "Alta estética cerámica",
-    description: "10+ años reproduciendo translucidez y textura natural.",
+    description: "10+ años reproduciendo la naturalidad de los tejidos dentales en cada restauración.",
     icon: icons.estrella,
   },
   {
-    title: "5 años de garantía · Norma ISO 9000",
-    description: "Operación legal, certificada y respaldada por más de una década.",
+    title: "2 años de garantía · Apegados a la Norma ISO 9000",
+    description: "Garantía por defectos de fabricación. Operación legal con manuales de procedimiento propios y más de una década de trayectoria comprobada.",
     icon: icons.escudo,
   },
 ];

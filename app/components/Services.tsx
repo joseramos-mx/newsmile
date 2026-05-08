@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { Sparkle, Tooth, Aperture, Needle } from "@phosphor-icons/react";
 
 const galleryImages = [
   "/images/img9.jpeg",
@@ -24,7 +25,7 @@ const services = [
   {
     id: "02",
     title: "Rehabilitación Bucodental",
-    description: "Diagnóstico y tratamiento integral con especialistas",
+    description: "Soporte protésico completo para tus rehabilitaciones de arco total y casos de alta complejidad",
   },
   {
     id: "03",
@@ -34,12 +35,12 @@ const services = [
   {
     id: "04",
     title: "Diseño de Sonrisa Digital",
-    description: "Flujo digital completo con escáner intraoral, sin impresiones",
+    description: "Integramos tu escáner intraoral para un flujo digital completo, sin impresiones físicas",
   },
   {
     id: "05",
     title: "Consultoría Clínica",
-    description: "Acompañamiento técnico y soporte al rehabilitador en caso activo",
+    description: "Asesoría técnica paciente por paciente, respondemos materiales, adhesión y protocolo en todo momento",
   },
 ];
 
@@ -63,7 +64,7 @@ function ServiceRow({
       onMouseLeave={() => setHovered(false)}
       style={{
         display: "grid",
-        gridTemplateColumns: "3.5rem 1fr auto",
+        gridTemplateColumns: "3.5rem 1fr clamp(14rem, 28%, 22rem) auto",
         alignItems: "center",
         gap: "clamp(1rem, 3vw, 2rem)",
         padding: `clamp(1.25rem, 3vw, 1.75rem) clamp(1rem, 4vw, 3rem)`,
@@ -91,43 +92,34 @@ function ServiceRow({
         {service.id}
       </span>
 
-      {/* Title + description */}
-      <div
+      {/* Title */}
+      <h3
         style={{
-          display: "flex",
-          alignItems: "baseline",
-          gap: "clamp(1rem, 5vw, 4rem)",
-          flexWrap: "wrap",
+          fontSize: "clamp(1.35rem, 3.2vw, 2.5rem)",
+          fontWeight: 400,
+          letterSpacing: "-0.03em",
+          color: hovered ? "#ffffff" : "rgba(255,255,255,0.82)",
+          transition: "color 0.35s ease",
+          lineHeight: 1.1,
+          margin: 0,
         }}
       >
-        <h3
-          style={{
-            fontSize: "clamp(1.35rem, 3.2vw, 2.5rem)",
-            fontWeight: 400,
-            letterSpacing: "-0.03em",
-            color: hovered ? "#ffffff" : "rgba(255,255,255,0.82)",
-            transition: "color 0.35s ease",
-            lineHeight: 1.1,
-            margin: 0,
-            whiteSpace: "nowrap",
-          }}
-        >
-          {service.title}
-        </h3>
-        <p
-          style={{
-            fontSize: "clamp(0.75rem, 1vw, 0.875rem)",
-            color: hovered ? "rgba(255,255,255,0.45)" : "rgba(255,255,255,0.25)",
-            fontWeight: 300,
-            lineHeight: 1.55,
-            margin: 0,
-            maxWidth: "32ch",
-            transition: "color 0.35s ease",
-          }}
-        >
-          {service.description}
-        </p>
-      </div>
+        {service.title}
+      </h3>
+
+      {/* Description — pinned column */}
+      <p
+        style={{
+          fontSize: "clamp(0.75rem, 1vw, 0.875rem)",
+          color: hovered ? "rgba(255,255,255,0.45)" : "rgba(255,255,255,0.25)",
+          fontWeight: 300,
+          lineHeight: 1.55,
+          margin: 0,
+          transition: "color 0.35s ease",
+        }}
+      >
+        {service.description}
+      </p>
 
       {/* Arrow circle */}
       <div
@@ -211,6 +203,87 @@ export default function Services() {
           </em>
         </motion.h2>
 
+        {/* ── Service highlight cards ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          className="service-cards"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "0.75rem",
+            marginBottom: "clamp(2.5rem, 5vw, 4rem)",
+          }}
+        >
+          {[
+            { Icon: Sparkle,  label: "Alta Estética Cerámica",   img: "/images/img26.jpeg" },
+            { Icon: Tooth,    label: "Rehabilitación Bucodental", img: "/images/img8.jpeg" },
+            { Icon: Aperture, label: "Diseño de Sonrisa Digital", img: "ddesonrisa.png" },
+          ].map(({ Icon, label, img }, i) => (
+            <motion.div
+              key={label}
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: 0.2 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+              style={{
+                position: "relative",
+                aspectRatio: "1 / 1",
+                borderRadius: "16px",
+                overflow: "hidden",
+                cursor: "default",
+              }}
+            >
+              {/* Background image */}
+              {img && (
+                <div style={{
+                  position: "absolute", inset: 0,
+                  backgroundImage: `url('${img}')`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  transition: "transform 0.5s ease",
+                }} className="svc-card-img" />
+              )}
+
+              {/* Fallback dark bg when no image */}
+              <div style={{
+                position: "absolute", inset: 0,
+                background: img ? "transparent" : "rgba(37,89,88,0.12)",
+                border: "1px solid rgba(255,255,255,0.07)",
+                borderRadius: "16px",
+              }} />
+
+              {/* Gradient overlay */}
+              <div style={{
+                position: "absolute", inset: 0,
+                background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 55%, transparent 100%)",
+              }} />
+
+              {/* Content — bottom left */}
+              <div style={{
+                position: "absolute",
+                bottom: 0, left: 0, right: 0,
+                padding: "1rem",
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.4rem",
+              }}>
+                <Icon size={20} weight="duotone" color="rgba(255,255,255,0.7)" />
+                <p style={{
+                  fontSize: "clamp(0.72rem, 1.1vw, 0.85rem)",
+                  fontWeight: 600,
+                  color: "white",
+                  margin: 0,
+                  lineHeight: 1.25,
+                  letterSpacing: "-0.01em",
+                }}>
+                  {label}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
         {/* Rows */}
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
           {services.map((s, i) => (
@@ -261,6 +334,11 @@ export default function Services() {
         </div>
       </motion.div>
 
+      <style>{`
+        @media (max-width: 640px) {
+          .service-cards { grid-template-columns: repeat(1, 1fr) !important; }
+        }
+      `}</style>
     </section>
   );
 }

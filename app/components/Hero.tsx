@@ -54,23 +54,6 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 flex flex-col h-full">
 
-        {/* Navbar */}
-        <header className="px-5 md:px-10 pt-5">
-          <nav className="liquid-glass rounded-xl px-5 py-2.5 flex items-center justify-between">
-            <Image src="/logo.svg" alt="New Smile" width={110} height={20} className="h-5 w-auto brightness-0 invert" />
-
-            <div className="hidden md:flex items-center gap-7 text-[0.8rem] text-white/80">
-              {["Story", "Investing", "Building", "Advisory"].map((l) => (
-                <a key={l} href="#" className="hover:text-white transition-colors">{l}</a>
-              ))}
-            </div>
-
-            <button className="bg-white text-black px-5 py-1.5 rounded-lg text-[0.8rem] font-medium hover:bg-gray-100 transition-colors">
-              Start a Chat
-            </button>
-          </nav>
-        </header>
-
         {/* Hero copy — anchored to bottom */}
         <main className="flex-1 flex flex-col justify-end px-5 md:px-10 pb-10 md:pb-14">
           <div className="flex items-end justify-between gap-6">
@@ -82,24 +65,34 @@ export default function Hero() {
                   className="font-normal leading-[1.05] mb-3"
                   style={{ fontSize: "clamp(2.2rem, 4.5vw, 4rem)", letterSpacing: "-0.04em" }}
                 >
-                  Shaping tomorrow<br />
-                  with vision and action.
+                  Protésica de alta<br />
+                  especialidad para<br />
+                  <em style={{ fontStyle: "normal", fontWeight: 300, opacity: 0.65 }}>tu consultorio.</em>
                 </h1>
               </FadeUp>
 
               <FadeUp delay={450}>
                 <p className="text-[0.9rem] text-white/55 mb-5 leading-relaxed">
-                  We back visionaries and craft ventures that define what comes next.
+                  El laboratorio que te acompaña en diagnóstico, materiales y resultado final — caso por caso.
                 </p>
               </FadeUp>
 
               <FadeUp delay={700}>
                 <div className="flex gap-3">
-                  <button className="bg-white text-black px-6 py-2.5 rounded-lg text-[0.82rem] font-medium hover:bg-gray-100 transition-colors">
-                    Start a Chat
-                  </button>
-                  <button className="liquid-glass border border-white/20 text-white px-6 py-2.5 rounded-lg text-[0.82rem] font-medium hover:bg-white/10 transition-colors">
-                    Explore Now
+                  <a
+                    href="https://wa.me/527225123187?text=Hola%2C%20me%20interesa%20cotizar%20un%20caso%20con%20New%20Smile%20Dental%20Lab."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white text-black px-6 py-2.5 rounded-lg text-[0.82rem] font-medium hover:bg-gray-100 transition-colors"
+                    style={{ textDecoration: "none", display: "inline-block" }}
+                  >
+                    Enviar mi caso
+                  </a>
+                  <button
+                    onClick={() => document.querySelector("#servicios")?.scrollIntoView({ behavior: "smooth" })}
+                    className="liquid-glass border border-white/20 text-white px-6 py-2.5 rounded-lg text-[0.82rem] font-medium hover:bg-white/10 transition-colors"
+                  >
+                    Ver servicios
                   </button>
                 </div>
               </FadeUp>
@@ -109,7 +102,7 @@ export default function Hero() {
             <FadeUp delay={900} className="hidden md:block shrink-0">
               <div className="liquid-glass border border-white/15 px-5 py-2.5 rounded-xl">
                 <span className="text-[0.95rem] font-light text-white/80">
-                  Investing. Building. Advisory.
+                  Laboratorio · Toluca, México
                 </span>
               </div>
             </FadeUp>

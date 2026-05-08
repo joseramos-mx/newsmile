@@ -119,23 +119,23 @@ export default function CTA() {
                 tu mejor trabajo
               </span>
 
-              <button
-                onClick={() =>
-                  document.querySelector("#form")?.scrollIntoView({ behavior: "smooth" })
-                }
+              {/* WhatsApp */}
+              <a
+                href="https://wa.me/527225123187?text=Hola%2C%20me%20interesa%20cotizar%20un%20caso%20con%20New%20Smile%20Dental%20Lab."
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "0.45rem",
                   background: "white",
                   color: "#255958",
-                  border: "none",
+                  textDecoration: "none",
                   padding: "0.7rem 1.4rem",
                   borderRadius: "100px",
                   fontSize: "clamp(0.78rem, 1.4vw, 0.88rem)",
                   fontWeight: 700,
                   letterSpacing: "0.03em",
-                  cursor: "pointer",
                   fontFamily: "inherit",
                   whiteSpace: "nowrap",
                   transition: "transform 0.2s, box-shadow 0.2s",
@@ -150,6 +150,40 @@ export default function CTA() {
                 }}
               >
                 Solicitar cotización <ArrowUpRight size={15} weight="bold" />
+              </a>
+
+              {/* Formulario */}
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent("open-case-readiness"))}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.45rem",
+                  background: "rgba(255,255,255,0.12)",
+                  color: "rgba(255,255,255,0.9)",
+                  border: "1px solid rgba(255,255,255,0.25)",
+                  padding: "0.7rem 1.4rem",
+                  borderRadius: "100px",
+                  fontSize: "clamp(0.78rem, 1.4vw, 0.88rem)",
+                  fontWeight: 600,
+                  letterSpacing: "0.03em",
+                  fontFamily: "inherit",
+                  cursor: "pointer",
+                  whiteSpace: "nowrap",
+                  transition: "transform 0.2s, background 0.2s, box-shadow 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.background = "rgba(255,255,255,0.2)";
+                  e.currentTarget.style.boxShadow = "0 10px 28px rgba(0,0,0,0.22)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.background = "rgba(255,255,255,0.12)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                Llenar formulario <ArrowUpRight size={15} weight="bold" />
               </button>
             </div>
 
@@ -162,7 +196,7 @@ export default function CTA() {
                 flexWrap: "wrap",
               }}
             >
-              {["Sin pago por adelantado", "Garantía de 5 años"].map((text) => (
+              {["Solo 50% de anticipo para arrancar tu caso", "2 años de garantía por defectos de fabricación"].map((text) => (
                 <span
                   key={text}
                   style={{
