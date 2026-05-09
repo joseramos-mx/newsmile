@@ -10,6 +10,7 @@ export default function Feature() {
   return (
     <section
       ref={ref}
+      id="casos"
       style={{
         background: "black",
         padding: "5rem clamp(1rem, 4vw, 3rem)",

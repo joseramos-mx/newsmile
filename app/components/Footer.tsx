@@ -179,10 +179,10 @@ export default function Footer() {
       {/* ── Oversized brand watermark ── */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/newsmile text.svg"
+        src="/newsmiletext.svg"
         alt=""
         aria-hidden="true"
-        className="block w-[100%] mx-auto opacity-[0.7] select-none pointer-events-none"
+        className="block w-full mx-auto opacity-[0.7] select-none pointer-events-none"
       />
 
     </footer>

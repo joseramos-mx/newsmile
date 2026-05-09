@@ -8,7 +8,6 @@ import FloatingButtons from "./components/FloatingButtons";
 const Allies          = dynamic(() => import("./components/Allies"));
 const Services        = dynamic(() => import("./components/Services"));
 const Feature         = dynamic(() => import("./components/Feature"));
-const Showcase        = dynamic(() => import("./components/Showcase"));
 const Benefits        = dynamic(() => import("./components/Benefits"));
 const Certifications  = dynamic(() => import("./components/Certifications"));
 const Testimonials    = dynamic(() => import("./components/Testimonials"));

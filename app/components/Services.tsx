@@ -31,7 +31,7 @@ const services = [
   {
     id: "03",
     title: "Implantología Protésica",
-    description: "Sobrestructuras y prótesis sobre implantes de alta complejidad",
+    description: "Sobrestructuras, coronas y prótesis sobre implantes con ajuste pasivo y precisión de laboratorio",
   },
   {
     id: "04",
@@ -41,7 +41,7 @@ const services = [
   {
     id: "05",
     title: "Consultoría Clínica",
-    description: "Asesoría técnica paciente por paciente, respondemos materiales, adhesión y protocolo en todo momento",
+    description: "Asesoría técnica paciente por paciente, respondemos dudas sobre materiales, adhesión y protocolo en todo momento",
   },
 ];
 

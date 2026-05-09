@@ -1,12 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { List, X } from "@phosphor-icons/react";
 
 const links: [string, string][] = [
   ["Servicios",   "#servicios"],
-  ["Casos",       "#showcase"],
+  ["Casos",       "#casos"],
   ["Beneficios",  "#benefits"],
   ["Formación",   "#certifications"],
   ["Testimonios", "#testimonials"],
@@ -56,11 +55,10 @@ export default function Navbar() {
         }}
       >
         {/* Logo */}
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src="/logo.svg"
           alt="New Smile"
-          width={100}
-          height={18}
           style={{ height: "18px", width: "auto", filter: "brightness(0) invert(1)", flexShrink: 0 }}
         />
 

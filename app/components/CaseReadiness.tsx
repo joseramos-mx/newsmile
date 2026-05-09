@@ -5,10 +5,10 @@ import { X, CheckCircle, Warning, XCircle, WhatsappLogo } from "@phosphor-icons/
 
 const questions = [
   "¿La línea de terminación es visible y bien definida?",
-  "¿Hay espacio mínimo de 1.5 mm en oclusión?",
-  "¿La impresión o escaneo captura la preparación sin defectos?",
+  "¿El espacio es el requerido y suficiente para la rehabilitación que solicitas?",
+  "¿La impresión o escaneo captura todos los tejidos sin deformaciones o alteraciones?",
   "¿El campo está libre de humedad y sangrado gingival?",
-  "¿Tienes la guía de sombra o color definida?",
+  "¿Tomaste el color adecuado para tu paciente?",
 ];
 
 type Answer = "si" | "nose" | "no" | null;

@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 // Inline SVGs — no external icon library needed
 const icons: Record<string, React.ReactNode> = {
   consultoria: (
@@ -44,6 +45,12 @@ const icons: Record<string, React.ReactNode> = {
       <path d="M6 9l2 2 4-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   ),
+  hoja: (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M3 15c0 0 1.5-7.5 6-9s7.5-1.5 7.5-1.5S15 9 12 11.25 3 15 3 15Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
+      <path d="M3 15c2-2 4.5-4 9-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+    </svg>
+  ),
 };
 
 const benefits = [
@@ -59,7 +66,7 @@ const benefits = [
   },
   {
     title: "Especialización internacional",
-    description: "Formados en México, Liechtenstein y Eslovenia.",
+    description: "Formados por expertos de México, Liechtenstein, Eslovenia, Brasil y Alemania.",
     icon: icons.globo,
   },
   {
@@ -76,6 +83,11 @@ const benefits = [
     title: "2 años de garantía · Apegados a la Norma ISO 9000",
     description: "Garantía por defectos de fabricación. Operación legal con manuales de procedimiento propios y más de una década de trayectoria comprobada.",
     icon: icons.escudo,
+  },
+  {
+    title: "Comprometidos con la Agenda 2030",
+    description: "Operación alineada con los Objetivos de Desarrollo Sostenible de la ONU: prácticas responsables, materiales certificados y laboratorio con conciencia.",
+    icon: icons.hoja,
   },
 ];
 
@@ -149,9 +161,18 @@ export default function Benefits() {
             color: "var(--mid-gray)",
             fontWeight: 300,
             maxWidth: "32ch",
+            marginBottom: "2rem",
           }}>
             Nacimos para resolver la problemática real que viven los odontólogos: tiempos largos, falta de consultoría y resultados que no cumplen las expectativas.
           </p>
+
+          <Image
+            src="/agenda 2030.png"
+            alt="Agenda 2030"
+            width={520}
+            height={200}
+            style={{ width: "auto", height: "200px" }}
+          />
         </motion.div>
 
         {/* Right — list */}

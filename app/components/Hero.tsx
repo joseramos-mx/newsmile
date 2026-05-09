@@ -39,7 +39,7 @@ export default function Hero() {
 
       {/* Background */}
       <Image
-        src="/herobg.jpeg"
+        src="/bgheronew.png"
         alt=""
         fill
         priority
