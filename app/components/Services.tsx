@@ -243,7 +243,7 @@ export default function Services() {
                   alt=""
                   fill
                   style={{ objectFit: "cover" }}
-                  sizes="(max-width: 640px) calc(100vw - 2rem), 380px"
+                  sizes="(max-width: 640px) 30vw, 380px"
                   className="svc-card-img"
                 />
               )}

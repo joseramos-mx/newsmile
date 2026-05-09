@@ -29,7 +29,16 @@ export default function RootLayout({
   return (
     <html lang="es" className={`h-full ${jakarta.variable} ${inter.variable}`}>
       <head>
-        <link rel="preload" as="image" href="/newsmile%20icon.png" fetchPriority="high" />
+        {/* Hero LCP image — preload the Next.js optimized variants so the browser starts fetching immediately */}
+        <link
+          rel="preload"
+          as="image"
+          // @ts-expect-error imagesrcset/imagesizes are valid HTML5 attrs not yet in React types
+          imagesrcset="/_next/image?url=%2Fbgheronew.png&w=828&q=75 828w, /_next/image?url=%2Fbgheronew.png&w=1080&q=75 1080w, /_next/image?url=%2Fbgheronew.png&w=1200&q=75 1200w, /_next/image?url=%2Fbgheronew.png&w=1920&q=75 1920w"
+          imagesizes="100vw"
+          fetchPriority="high"
+        />
+        <link rel="preload" as="image" href="/newsmile%20icon.png" />
         <link rel="preload" as="font" type="font/otf" href="/fonts/GillSans-Regular.otf" crossOrigin="anonymous" />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
