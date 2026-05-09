@@ -54,6 +54,8 @@ export default function Allies() {
                 key={i}
                 src={logo.src}
                 alt={logo.alt}
+                width={140}
+                height={42}
                 className="ally-logo"
                 style={{
                   height: "clamp(28px, 3.5vw, 42px)",

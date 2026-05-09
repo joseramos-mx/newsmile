@@ -8,6 +8,13 @@
     "start": "next start",
     "lint": "eslint"
   },
+  "browserslist": [
+    "last 2 chrome versions",
+    "last 2 firefox versions",
+    "last 2 safari versions",
+    "last 2 edge versions",
+    "not dead"
+  ],
   "dependencies": {
     "@base-ui/react": "^1.4.0",
     "@phosphor-icons/react": "^2.1.10",

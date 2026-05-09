@@ -29,8 +29,8 @@ export default function RootLayout({
   return (
     <html lang="es" className={`h-full ${jakarta.variable} ${inter.variable}`}>
       <head>
-        {/* Preload hero image so LCP isn't blocked waiting for CSS to parse */}
         <link rel="preload" as="image" href="/newsmile%20icon.png" fetchPriority="high" />
+        <link rel="preload" as="font" type="font/otf" href="/fonts/GillSans-Regular.otf" crossOrigin="anonymous" />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
