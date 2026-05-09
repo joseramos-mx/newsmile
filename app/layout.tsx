@@ -33,9 +33,8 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          // @ts-expect-error imagesrcset/imagesizes are valid HTML5 attrs not yet in React types
-          imagesrcset="/_next/image?url=%2Fbgheronew.png&w=828&q=75 828w, /_next/image?url=%2Fbgheronew.png&w=1080&q=75 1080w, /_next/image?url=%2Fbgheronew.png&w=1200&q=75 1200w, /_next/image?url=%2Fbgheronew.png&w=1920&q=75 1920w"
-          imagesizes="100vw"
+          imageSrcSet="/_next/image?url=%2Fbgheronew.png&w=828&q=75 828w, /_next/image?url=%2Fbgheronew.png&w=1080&q=75 1080w, /_next/image?url=%2Fbgheronew.png&w=1200&q=75 1200w, /_next/image?url=%2Fbgheronew.png&w=1920&q=75 1920w"
+          imageSizes="100vw"
           fetchPriority="high"
         />
         <link rel="preload" as="image" href="/newsmile%20icon.png" />
