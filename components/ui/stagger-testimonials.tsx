@@ -17,7 +17,7 @@ export const TESTIMONIALS = [
       "Tenía casos de alta complejidad que otros laboratorios no podían atender a tiempo ni con la calidad que exijo. Con NewSmile encontré al verdadero aliado que mis pacientes merecen.",
     author: "Dr. Roberto Garza",
     role: "Rehabilitador Oral · Ciudad de México",
-    imgSrc: "https://i.pravatar.cc/150?img=11",
+    imgSrc: "https://i.pravatar.cc/70?img=11",
   },
   {
     id: 1,
@@ -25,7 +25,7 @@ export const TESTIMONIALS = [
       "Lo que me cambió la vida clínica fue el acompañamiento en el diagnóstico. Ya no estoy solo frente a los casos difíciles. Me asesoran en materiales, adhesión, protocolo… y siempre responden.",
     author: "Dra. Claudia Mendoza",
     role: "Especialista en Implantología · Estado de México",
-    imgSrc: "https://i.pravatar.cc/150?img=47",
+    imgSrc: "https://i.pravatar.cc/70?img=47",
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ export const TESTIMONIALS = [
       "Gracias a su soporte coloqué 3 coronas en una hora. El diagnóstico certero, la elección de materiales y su seguimiento continuo lo hicieron realidad.",
     author: "Dr. Fernando Ríos",
     role: "Odontólogo Estético · Veracruz",
-    imgSrc: "https://i.pravatar.cc/150?img=33",
+    imgSrc: "https://i.pravatar.cc/70?img=33",
   },
   {
     id: 3,
@@ -41,7 +41,7 @@ export const TESTIMONIALS = [
       "Mis pacientes notaron de inmediato la diferencia estética. Las carillas tienen una translucidez que nunca vi en otro laboratorio. Sin ajustes desde la primera prueba.",
     author: "Dra. Alejandra Vega",
     role: "Diseñadora de Sonrisas · Guerrero",
-    imgSrc: "https://i.pravatar.cc/150?img=44",
+    imgSrc: "https://i.pravatar.cc/70?img=44",
   },
   {
     id: 4,
@@ -49,7 +49,7 @@ export const TESTIMONIALS = [
       "Probé varios laboratorios en el Estado de México y ninguno me daba certeza ni puntualidad. Con NewSmile sé exactamente cuándo llega el trabajo y siempre cumple lo acordado.",
     author: "Dr. Marcos Santillán",
     role: "Especialista en Prótesis · Toluca",
-    imgSrc: "https://i.pravatar.cc/150?img=15",
+    imgSrc: "https://i.pravatar.cc/70?img=15",
   },
 ];
 // ─────────────────────────────────────────────────────────────────────────────
