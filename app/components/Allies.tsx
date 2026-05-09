@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
 const logos = [
   { src: "/allies/kulzer.webp",                              alt: "Kulzer" },
@@ -46,28 +47,51 @@ export default function Allies() {
             paddingLeft: "clamp(2.5rem, 5vw, 4.5rem)",
           }}
         >
-          {track.map((logo, i) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              key={i}
-              src={logo.src}
-              alt={logo.alt}
-              style={{
-                height: "clamp(28px, 3.5vw, 42px)",
-                width: "auto",
-                maxWidth: "140px",
-                objectFit: "contain",
-                flexShrink: 0,
-                filter: "brightness(0) invert(1)",
-                opacity: 0.45,
-                transition: "opacity 0.25s ease",
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "0.85"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "0.45"; }}
-            />
-          ))}
+          {track.map((logo, i) =>
+            logo.src.endsWith(".svg") ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={i}
+                src={logo.src}
+                alt={logo.alt}
+                className="ally-logo"
+                style={{
+                  height: "clamp(28px, 3.5vw, 42px)",
+                  width: "auto",
+                  maxWidth: "140px",
+                  objectFit: "contain",
+                  flexShrink: 0,
+                  filter: "brightness(0) invert(1)",
+                }}
+              />
+            ) : (
+              <div
+                key={i}
+                className="ally-logo-wrap"
+                style={{
+                  position: "relative",
+                  height: "clamp(28px, 3.5vw, 42px)",
+                  width: "140px",
+                  flexShrink: 0,
+                  filter: "brightness(0) invert(1)",
+                }}
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  fill
+                  style={{ objectFit: "contain" }}
+                  sizes="140px"
+                />
+              </div>
+            )
+          )}
         </div>
       </motion.div>
+      <style>{`
+        .ally-logo, .ally-logo-wrap { opacity: 0.45; transition: opacity 0.25s ease; }
+        .ally-logo:hover, .ally-logo-wrap:hover { opacity: 0.85; }
+      `}</style>
     </section>
   );
 }

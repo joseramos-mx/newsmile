@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Sparkle, Tooth, Aperture, Needle } from "@phosphor-icons/react";
+import Image from "next/image";
 
 const galleryImages = [
   "/images/img9.jpeg",
@@ -226,6 +227,7 @@ export default function Services() {
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.2 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+              className="svc-card-wrap"
               style={{
                 position: "relative",
                 aspectRatio: "1 / 1",
@@ -236,22 +238,25 @@ export default function Services() {
             >
               {/* Background image */}
               {img && (
-                <div style={{
-                  position: "absolute", inset: 0,
-                  backgroundImage: `url('${img}')`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  transition: "transform 0.5s ease",
-                }} className="svc-card-img" />
+                <Image
+                  src={img.startsWith("/") ? img : `/${img}`}
+                  alt=""
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="svc-card-img"
+                />
               )}
 
               {/* Fallback dark bg when no image */}
-              <div style={{
-                position: "absolute", inset: 0,
-                background: img ? "transparent" : "rgba(37,89,88,0.12)",
-                border: "1px solid rgba(255,255,255,0.07)",
-                borderRadius: "16px",
-              }} />
+              {!img && (
+                <div style={{
+                  position: "absolute", inset: 0,
+                  background: "rgba(37,89,88,0.12)",
+                  border: "1px solid rgba(255,255,255,0.07)",
+                  borderRadius: "16px",
+                }} />
+              )}
 
               {/* Gradient overlay */}
               <div style={{
@@ -310,26 +315,28 @@ export default function Services() {
           style={{ display: "inline-flex", gap: "0.5rem", width: "max-content" }}
         >
           {galleryTrack.map((src, i) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <div
               key={i}
-              src={src}
-              alt=""
-              aria-hidden="true"
+              className="marquee-img-wrap"
               style={{
+                position: "relative",
                 height: "clamp(140px, 18vw, 220px)",
-                width: "auto",
                 aspectRatio: "1 / 1",
-                objectFit: "cover",
-                borderRadius: "8px",
                 flexShrink: 0,
-                display: "block",
-                filter: "brightness(0.82) saturate(0.85)",
-                transition: "filter 0.3s ease",
+                borderRadius: "8px",
+                overflow: "hidden",
               }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLImageElement).style.filter = "brightness(1) saturate(1)"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLImageElement).style.filter = "brightness(0.82) saturate(0.85)"; }}
-            />
+            >
+              <Image
+                src={src}
+                alt=""
+                fill
+                aria-hidden="true"
+                style={{ objectFit: "cover" }}
+                sizes="(max-width: 640px) 140px, (max-width: 1200px) 18vw, 220px"
+                className="marquee-img"
+              />
+            </div>
           ))}
         </div>
       </motion.div>
@@ -338,6 +345,10 @@ export default function Services() {
         @media (max-width: 640px) {
           .service-cards { grid-template-columns: repeat(1, 1fr) !important; }
         }
+        .marquee-img { filter: brightness(0.82) saturate(0.85); transition: filter 0.3s ease; }
+        .marquee-img-wrap:hover .marquee-img { filter: brightness(1) saturate(1); }
+        .svc-card-img { transition: transform 0.5s ease; }
+        .svc-card-wrap:hover .svc-card-img { transform: scale(1.04); }
       `}</style>
     </section>
   );
