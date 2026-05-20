@@ -66,7 +66,7 @@ function NewsletterWidget() {
 
       <p className="text-[0.7rem] text-white/25 leading-relaxed mb-6">
         ✦ Al suscribirte aceptas nuestra{" "}
-        <a href="#" className="text-white/40 underline hover:text-white/60 transition-colors duration-200">
+        <a href="/legal" className="text-white/40 underline hover:text-white/60 transition-colors duration-200">
           Política de privacidad
         </a>
         .
@@ -154,10 +154,10 @@ export default function Footer() {
             {new Date().getFullYear()} · New Smile Dental Lab · Toluca, México
           </span>
           <a
-            href="#"
+            href="/legal"
             className="text-[0.72rem] text-white/20 no-underline tracking-[0.08em] uppercase hover:text-white/50 transition-colors duration-200"
           >
-            Política de privacidad
+            Aviso Legal
           </a>
           <a
             href="mailto:ns.dental.laboratorio@gmail.com"

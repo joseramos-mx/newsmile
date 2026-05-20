@@ -34,7 +34,7 @@ export default function CTA() {
           {/* Pattern texture overlay */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/pattern.svg"
+            src="/logo-pattern.svg"
             alt=""
             aria-hidden="true"
             style={{
@@ -93,7 +93,7 @@ export default function CTA() {
                 margin: "0 0 0.5rem",
               }}
             >
-              Hagamos de tu próximo trabajo
+              Tu práctica merece
             </h2>
 
             {/* Second line + inline CTA */}
@@ -116,7 +116,7 @@ export default function CTA() {
                   lineHeight: 1.12,
                 }}
               >
-                tu mejor trabajo
+                un laboratorio a su altura
               </span>
 
               {/* WhatsApp */}
@@ -196,7 +196,7 @@ export default function CTA() {
                 flexWrap: "wrap",
               }}
             >
-              {["Solo 50% de anticipo para arrancar tu caso", "2 años de garantía por defectos de fabricación"].map((text) => (
+              {["Solo 50% de anticipo para comenzar tu caso", "2 años de garantía por defectos de fabricación"].map((text) => (
                 <span
                   key={text}
                   style={{
