@@ -1,0 +1,13 @@
+{
+  "name": "New Smile Dental Lab",
+  "short_name": "NewSmile",
+  "description": "Laboratorio dental de alta especialización en Toluca, México. Cerámica, prótesis fija e implantología protésica.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f5355",
+  "theme_color": "#0f5355",
+  "icons": [
+    { "src": "/favicon/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
