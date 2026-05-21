@@ -1,8 +1,9 @@
 import dynamic from "next/dynamic";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
-import CaseReadiness from "./components/CaseReadiness";
-import FloatingButtons from "./components/FloatingButtons";
+
+const CaseReadiness   = dynamic(() => import("./components/CaseReadiness"));
+const FloatingButtons = dynamic(() => import("./components/FloatingButtons"));
 
 // Lazy-load everything below the fold — splits JS into separate chunks
 const Allies          = dynamic(() => import("./components/Allies"));
