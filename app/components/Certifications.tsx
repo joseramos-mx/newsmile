@@ -27,11 +27,11 @@ const certifications: { id: string; title: string; detail: string; Icon: Icon }[
 ];
 
 const countries = [
-  { name: "México", flag: "🇲🇽", color: "#255958" },
-  { name: "Liechtenstein", flag: "🇱🇮", color: "#255958" },
-  { name: "Eslovenia", flag: "🇸🇮", color: "#255958" },
-  { name: "Brasil", flag: "🇧🇷", color: "#255958" },
-  { name: "Alemania", flag: "🇩🇪", color: "#255958" },
+  { name: "México",       code: "mx" },
+  { name: "Liechtenstein", code: "li" },
+  { name: "Eslovenia",   code: "si" },
+  { name: "Brasil",      code: "br" },
+  { name: "Alemania",    code: "de" },
 ];
 
 function CertificationRow({
@@ -152,7 +152,14 @@ function CountryBadge({
         el.style.transform = "translateY(0)";
       }}
     >
-      <span style={{ fontSize: "2.5rem" }}>{country.flag}</span>
+      <img
+        src={`https://flagcdn.com/w40/${country.code}.png`}
+        srcSet={`https://flagcdn.com/w80/${country.code}.png 2x`}
+        width={40}
+        height={27}
+        alt={country.name}
+        style={{ borderRadius: "3px", objectFit: "cover" }}
+      />
       <span
         style={{
           fontSize: "0.85rem",

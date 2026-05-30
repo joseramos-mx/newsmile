@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const pages: [string, string][] = [
   ["Servicios",   "#servicios"],
-  ["Casos",       "#showcase"],
+  ["Casos",       "#casos"],
   ["Beneficios",  "#benefits"],
   ["Formación",   "#certifications"],
   ["Testimonios", "#testimonials"],
@@ -119,9 +119,14 @@ export default function Footer() {
         <div>
           <ColHead>Ubicación</ColHead>
           <p className="text-[0.9rem] font-medium text-white/80 mb-[0.35rem]">Toluca, México</p>
-          <p className="text-[0.8rem] text-white/30 leading-[1.7]">
+          <a
+            href="https://share.google/69n0OMhcqGKmUiNxz"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-[0.8rem] text-white/30 leading-[1.7] no-underline hover:text-white/55 transition-colors duration-200"
+          >
             Sebastián Lerdo de Tejada #686<br />Toluca, México, C.P. 50040
-          </p>
+          </a>
         </div>
         <div>
           <ColHead>Horario</ColHead>
