@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 828, 1080, 1200, 1920],
     imageSizes: [32, 64, 128, 256, 384],
     minimumCacheTTL: 31536000,
+    remotePatterns: [{ hostname: "cdn.sanity.io" }],
   },
   compress: true,
   allowedDevOrigins: ["192.168.68.57"],

@@ -10,6 +10,7 @@ const links: [string, string][] = [
   ["Formación",   "#certifications"],
   ["Testimonios", "#testimonials"],
   ["Contacto",    "#form"],
+  ["Blog",        "/blog"],
 ];
 
 export default function Navbar() {
@@ -24,7 +25,11 @@ export default function Navbar() {
 
   const scrollTo = (href: string) => {
     setOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    if (href.startsWith("/")) {
+      window.location.href = href;
+    } else {
+      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (

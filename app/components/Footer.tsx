@@ -9,6 +9,7 @@ const pages: [string, string][] = [
   ["Formación",   "#certifications"],
   ["Testimonios", "#testimonials"],
   ["Contacto",    "#form"],
+  ["Blog",        "/blog"],
 ];
 
 const social: [string, string][] = [
