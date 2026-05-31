@@ -99,16 +99,22 @@ export default function ContactForm() {
                 {/* Contact info — widget-style rows */}
                 <div className="flex flex-col gap-3">
                   {[
-                    { Icon: MapPin,       text: "Sebastián Lerdo de Tejada #686, Toluca" },
-                    { Icon: Envelope,     text: "ns.dental.laboratorio@gmail.com" },
-                    { Icon: WhatsappLogo, text: "+52 722 512 3187" },
-                  ].map(({ Icon, text }) => (
-                    <div key={text} className="flex items-center gap-3 rounded-xl border border-white/6 bg-white/[0.03] px-4 py-3">
+                    { Icon: MapPin,       text: "Sebastián Lerdo de Tejada #686, Toluca", href: "https://share.google/69n0OMhcqGKmUiNxz" },
+                    { Icon: Envelope,     text: "ns.dental.laboratorio@gmail.com",         href: "mailto:ns.dental.laboratorio@gmail.com" },
+                    { Icon: WhatsappLogo, text: "+52 722 512 3187",                        href: "https://wa.me/527225123187" },
+                  ].map(({ Icon, text, href }) => (
+                    <a
+                      key={text}
+                      href={href}
+                      target={href.startsWith("http") ? "_blank" : undefined}
+                      rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="flex items-center gap-3 rounded-xl border border-white/6 bg-white/3 px-4 py-3 no-underline transition-colors duration-200 hover:border-arandano-light/40 hover:bg-arandano/10 cursor-pointer"
+                    >
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#255958]/20">
                         <Icon size={15} color="#317573" weight="duotone" />
                       </div>
                       <span className="text-xs text-white/50 font-light">{text}</span>
-                    </div>
+                    </a>
                   ))}
                 </div>
               </div>
