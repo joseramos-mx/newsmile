@@ -27,7 +27,7 @@ type Post = {
 };
 
 export async function generateStaticParams() {
-  const slugs: { slug: string }[] = await client.fetch(postSlugsQuery);
+  const slugs: { slug: string }[] = await client.fetch(postSlugsQuery).catch(() => []);
   return slugs.map(({ slug }) => ({ slug }));
 }
 
