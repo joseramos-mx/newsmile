@@ -39,7 +39,7 @@ function formatDate(iso: string) {
 }
 
 export default async function BlogPage() {
-  const posts: Post[] = await client.fetch(postsQuery);
+  const posts: Post[] = await client.fetch(postsQuery).catch(() => []);
 
   return (
     <div style={{ background: "#faf9f7", minHeight: "100vh" }}>

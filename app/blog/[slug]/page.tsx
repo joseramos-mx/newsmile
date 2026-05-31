@@ -33,7 +33,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = await client.fetch<Post | null>(postBySlugQuery, { slug });
+  const post = await client.fetch<Post | null>(postBySlugQuery, { slug }).catch(() => null);
   if (!post) return {};
   return {
     title: post.title,
