@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import type { PortableTextBlock } from "@portabletext/types";
-import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import type { SanityImageSource } from "@sanity/image-url";
 import { client } from "../../../sanity/lib/client";
 import { postBySlugQuery, postSlugsQuery } from "../../../sanity/lib/queries";
 import { urlFor } from "../../../sanity/lib/image";
