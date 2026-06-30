@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reporte de sesión — New Smile Dental Lab · 2026-06-30</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --fg: #f4f4f4;
+    --muted: #8a8a8a;
+    --accent: #317573;
+    --accent-soft: rgba(49, 117, 115, 0.12);
+    --border: rgba(255, 255, 255, 0.08);
+    --ok: #22c55e;
+    --warn: #f59e0b;
+    --card: #131313;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 14px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    padding: clamp(1.5rem, 4vw, 3rem);
+  }
+  .wrap { max-width: 920px; margin: 0 auto; }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+  }
+  h1 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    margin: 0 0 0.5rem;
+    line-height: 1.15;
+  }
+  .meta {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin: 0;
+  }
+  .meta code {
+    background: var(--card);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.78rem;
+  }
+  section { margin-bottom: 2.5rem; }
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  h2 .num {
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 0.25rem 0.55rem;
+    border-radius: 5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 0.75rem;
+  }
+  .card h3 {
+    margin: 0 0 0.4rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--fg);
+  }
+  .card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .card code, code {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 0.1rem 0.35rem;
+    border-radius: 3px;
+    font-size: 0.78rem;
+    color: #e8e8e8;
+    font-family: ui-monospace, "SF Mono", monospace;
+  }
+  ul { margin: 0.5rem 0 0; padding-left: 1.1rem; color: var(--muted); font-size: 0.85rem; }
+  ul li { margin-bottom: 0.3rem; }
+  .badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+  .badge.ok   { background: rgba(34, 197, 94, 0.15); color: var(--ok); }
+  .badge.warn { background: rgba(245, 158, 11, 0.15); color: var(--warn); }
+  .commits {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .commit {
+    font-family: ui-monospace, monospace;
+    font-size: 0.78rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 0.55rem 0.85rem;
+    border-radius: 6px;
+    color: var(--muted);
+  }
+  .commit b { color: var(--fg); font-weight: 500; }
+  .next {
+    background: linear-gradient(135deg, rgba(49,117,115,0.10), rgba(49,117,115,0.03));
+    border: 1px solid rgba(49,117,115,0.25);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+  }
+  .next h2 { color: var(--accent); margin-bottom: 0.75rem; }
+  .next ol { padding-left: 1.25rem; color: var(--fg); font-size: 0.9rem; margin: 0; }
+  .next ol li { margin-bottom: 0.5rem; }
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Reporte de sesión · Desarrollo</p>
+  <h1>New Smile Dental Lab — Analytics, Responsive, SEO</h1>
+  <p class="meta">
+    Proyecto: <code>newsmileld.com</code>
+    · Fecha: 2026-06-30
+    · Commits desplegados: <code>3</code>
+    · Status producción: <span style="color:var(--ok)">Ready</span>
+  </p>
+</header>
+
+<!-- ─────────────────────────────────────────── -->
+<section>
+  <h2><span class="num">01</span> Microsoft Clarity Analytics <span class="badge ok">Desplegado</span></h2>
+
+  <div class="card">
+    <h3>Paquete NPM instalado</h3>
+    <p><code>@microsoft/clarity@^1.0.2</code> añadido a <code>package.json</code> para llamadas SDK (<code>Clarity.identify()</code>, <code>Clarity.event()</code>, <code>Clarity.setTag()</code>) cuando se requiera.</p>
+  </div>
+
+  <div class="card">
+    <h3>Snippet de tracking en <code>&lt;head&gt;</code></h3>
+    <p>Añadido en <code>app/layout.tsx</code> usando <code>next/script</code> con <code>strategy="afterInteractive"</code> (recomendado por Next.js 16 para scripts de analítica). Project ID: <code>xf8leq41x0</code>.</p>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<section>
+  <h2><span class="num">02</span> Responsive móvil — Sección Servicios <span class="badge ok">Arreglado</span></h2>
+
+  <div class="card">
+    <h3>Problema raíz</h3>
+    <p>El grid de <code>ServiceRow</code> usaba columnas fijas (<code>3.5rem 1fr clamp(14rem,28%,22rem) auto</code>) que sumaban ~400px, dejando 0px para el título en pantallas de 375px. Además la sección no tenía padding horizontal y usaba <code>overflow: visible</code> + márgenes negativos → scroll horizontal en móvil.</p>
+  </div>
+
+  <div class="card">
+    <h3>Solución aplicada</h3>
+    <ul>
+      <li>Layout de 3 columnas para móvil con <code>grid-template-areas</code> (número + título + flecha arriba, descripción debajo)</li>
+      <li>Media query separada para desktop (≥768px) que conserva las 4 columnas y la extensión lateral del hover</li>
+      <li>Padding horizontal añadido al contenedor interno: <code>clamp(1.25rem, 4vw, 3rem)</code></li>
+      <li><code>overflow: hidden</code> en la sección para contener el marquee</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<section>
+  <h2><span class="num">03</span> Fix canonical SEO — vercel.app → newsmileld.com <span class="badge ok">Desplegado</span></h2>
+
+  <div class="card">
+    <h3>Causa raíz identificada</h3>
+    <p>El sitio declaraba a Google que su URL canónica era <code>newsmileld.vercel.app</code> (canonical tag, og:url, og:image, JSON-LD). Google obedecía el canonical e indexaba la versión Vercel en vez del dominio final.</p>
+  </div>
+
+  <div class="card">
+    <h3>SITE_URL centralizado</h3>
+    <p>Creado <code>app/lib/site.ts</code> con la constante <code>SITE_URL = "https://newsmileld.com"</code> (más teléfono, email, dirección). Antes el dominio estaba hardcodeado en 4 archivos distintos.</p>
+  </div>
+
+  <div class="card">
+    <h3>Archivos actualizados</h3>
+    <ul>
+      <li><code>app/layout.tsx</code> — metadataBase, alternates.canonical, og:url, twitter, todo el JSON-LD</li>
+      <li><code>app/robots.ts</code> — host y sitemap apuntan a newsmileld.com</li>
+      <li><code>app/sitemap.ts</code> — todas las URLs con dominio canónico</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Redirect 308 en <code>next.config.ts</code></h3>
+    <p>Cualquier request a <code>newsmileld.vercel.app/*</code> rebota a <code>newsmileld.com/*</code> con un 308 permanente. Cinturón y tirantes para que Google consolide las señales en el dominio canónico.</p>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<section>
+  <h2><span class="num">04</span> Expansión SEO con keywords del estudio <span class="badge ok">Desplegado</span></h2>
+
+  <div class="card">
+    <h3>Title y description (home)</h3>
+    <p>Nuevo title: <i>"Laboratorio Dental en Toluca | Disilicato de Litio · Zirconia · Coronas — New Smile"</i>. Description amplía "disilicato de litio, zirconia dental" explícitamente.</p>
+  </div>
+
+  <div class="card">
+    <h3><code>keywords[]</code> expandida</h3>
+    <p>Ahora cubre los 5 términos del estudio + variantes Toluca + sinónimos: <i>corona de disilicato de litio, coronas de disilicato de litio, IPS e.max, zirconia dental, zirconia monolítica, coronas de zirconia, puentes de zirconia, laboratorio dental Toluca de Lerdo, carillas, prótesis sobre implantes Toluca, etc.</i></p>
+  </div>
+
+  <div class="card">
+    <h3>JSON-LD enriquecido</h3>
+    <ul>
+      <li><code>hasOfferCatalog</code> añade "Coronas de disilicato de litio" y "Zirconia dental" como <code>Service</code> con URLs propias</li>
+      <li><code>knowsAbout</code> incluye disilicato, zirconia, IPS e.max</li>
+      <li><code>areaServed</code> añade Metepec</li>
+      <li>Schema <b>FAQPage</b> nuevo con 5 Q&amp;A — habilita rich snippets en SERP</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<section>
+  <h2><span class="num">05</span> Landing pages dedicadas por material <span class="badge ok">Desplegadas</span></h2>
+
+  <div class="card">
+    <h3><code>/corona-disilicato-litio</code></h3>
+    <p>Página estática server-rendered. ~900 palabras, H1 con keyword, 5 secciones (qué es, cuándo elegirlo, ventajas técnicas, por qué New Smile), 6 FAQs. Tres schemas JSON-LD: <code>BreadcrumbList</code>, <code>Service</code>, <code>FAQPage</code>.</p>
+  </div>
+
+  <div class="card">
+    <h3><code>/zirconia-dental</code></h3>
+    <p>Misma estructura, contenido específico de zirconia: tipos (monolítica 3Y, translúcida 4Y/5Y, multi-layer, estratificada), indicaciones, ventajas. 6 FAQs con diferenciación vs disilicato.</p>
+  </div>
+
+  <div class="card">
+    <h3>Componente compartido</h3>
+    <p><code>app/components/ServicePageLayout.tsx</code> — layout reutilizable para futuras landing pages de servicio (Hero, Breadcrumb, secciones de prose/list, FAQ accordion).</p>
+  </div>
+
+  <div class="card">
+    <h3>Discoverability</h3>
+    <ul>
+      <li>Sitemap incluye las 2 nuevas páginas con prioridad <code>0.95</code></li>
+      <li>Footer: columna nueva "Materiales" enlazando a ambas</li>
+      <li>Both prerendered estáticas (verificado en build output)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<section>
+  <h2><span class="num">06</span> Commits desplegados</h2>
+  <div class="commits">
+    <div class="commit"><b>8f5eae1</b> · feat: add Microsoft Clarity analytics tracking</div>
+    <div class="commit"><b>2bdc0a0</b> · fix(services): make ServiceRow fully responsive on mobile</div>
+    <div class="commit"><b>0f500a2</b> · feat(seo): canonical to newsmileld.com + material landing pages</div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<section class="next">
+  <h2>Pendientes — acciones manuales</h2>
+  <ol>
+    <li><b>Google Search Console:</b> eliminar el sitemap antiguo (con error "URL no permitida"), añadir el nuevo escribiendo solo <code>sitemap.xml</code>, y pedir indexación manual de las 3 páginas clave (<code>/</code>, <code>/corona-disilicato-litio</code>, <code>/zirconia-dental</code>).</li>
+    <li><b>Google Business Profile:</b> reclamar la ficha de "New Smile Dental Lab" y conectar <code>newsmileld.com</code> como sitio web. Pesa muchísimo en el local pack de "laboratorio dental Toluca".</li>
+    <li><b>Microsoft Clarity:</b> validar en el dashboard de Clarity que ya están llegando eventos de <code>newsmileld.com</code>.</li>
+    <li><b>Opcional — limpieza acelerada:</b> añadir la propiedad <code>newsmileld.vercel.app</code> en GSC y usar "Retirada de URLs" sobre la home para esconder los snippets viejos mientras Google procesa el 308.</li>
+  </ol>
+</section>
+
+<footer>
+  Generado al cierre de sesión · El deploy en producción ya refleja los 3 commits. Sitemap en vivo verificado con 5 URLs en dominio canónico.
+</footer>
+
+</div>
+</body>
+</html>
