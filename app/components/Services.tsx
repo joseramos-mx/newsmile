@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Sparkle, Tooth, Aperture, Needle } from "@phosphor-icons/react";
+import { Sparkle, Tooth, Aperture } from "@phosphor-icons/react";
 import Image from "next/image";
 
 const galleryImages = [
@@ -63,14 +63,8 @@ function ServiceRow({
       transition={{ duration: 0.65, delay: 0.12 + index * 0.09, ease: [0.22, 1, 0.36, 1] }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      className="service-row"
       style={{
-        display: "grid",
-        gridTemplateColumns: "3.5rem 1fr clamp(14rem, 28%, 22rem) auto",
-        alignItems: "center",
-        gap: "clamp(1rem, 3vw, 2rem)",
-        padding: `clamp(1.25rem, 3vw, 1.75rem) clamp(1rem, 4vw, 3rem)`,
-        marginLeft: `calc(-1 * clamp(1rem, 4vw, 3rem))`,
-        marginRight: `calc(-1 * clamp(1rem, 4vw, 3rem))`,
         borderBottom: "1px solid rgba(255,255,255,0.06)",
         background: hovered ? "rgba(255,255,255,0.025)" : "transparent",
         transition: "background 0.35s ease",
@@ -79,15 +73,10 @@ function ServiceRow({
     >
       {/* Number */}
       <span
+        className="service-row-num"
         style={{
-          fontFamily: "ui-monospace, monospace",
-          fontSize: "0.8rem",
-          fontWeight: 500,
-          letterSpacing: "0.04em",
           color: hovered ? "#255958" : "rgba(37,89,88,0.45)",
           transition: "color 0.35s ease",
-          userSelect: "none",
-          paddingTop: "0.15em",
         }}
       >
         {service.id}
@@ -95,14 +84,10 @@ function ServiceRow({
 
       {/* Title */}
       <h3
+        className="service-row-title"
         style={{
-          fontSize: "clamp(1.35rem, 3.2vw, 2.5rem)",
-          fontWeight: 400,
-          letterSpacing: "-0.03em",
           color: hovered ? "#ffffff" : "rgba(255,255,255,0.82)",
           transition: "color 0.35s ease",
-          lineHeight: 1.1,
-          margin: 0,
         }}
       >
         {service.title}
@@ -110,12 +95,9 @@ function ServiceRow({
 
       {/* Description — pinned column */}
       <p
+        className="service-row-desc"
         style={{
-          fontSize: "clamp(0.75rem, 1vw, 0.875rem)",
           color: hovered ? "rgba(255,255,255,0.45)" : "rgba(255,255,255,0.25)",
-          fontWeight: 300,
-          lineHeight: 1.55,
-          margin: 0,
           transition: "color 0.35s ease",
         }}
       >
@@ -124,16 +106,10 @@ function ServiceRow({
 
       {/* Arrow circle */}
       <div
+        className="service-row-arrow"
         style={{
-          width: "38px",
-          height: "38px",
-          borderRadius: "50%",
-          border: `1px solid ${hovered ? "rgba(37,89,88,0.55)" : "rgba(255,255,255,0.09)"}`,
+          borderColor: hovered ? "rgba(37,89,88,0.55)" : "rgba(255,255,255,0.09)",
           background: hovered ? "rgba(37,89,88,0.12)" : "transparent",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexShrink: 0,
           transform: hovered ? "translateX(5px)" : "translateX(0)",
           transition: "transform 0.35s ease, border-color 0.35s ease, background 0.35s ease",
         }}
@@ -165,10 +141,17 @@ export default function Services() {
         background: "#000",
         paddingTop: "clamp(4rem, 8vw, 7rem)",
         paddingBottom: 0,
-        overflow: "visible",
+        overflow: "hidden",
       }}
     >
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      <div
+        className="services-inner"
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "0 clamp(1.25rem, 4vw, 3rem)",
+        }}
+      >
 
         {/* Eyebrow */}
         <motion.div
@@ -243,7 +226,7 @@ export default function Services() {
                   alt=""
                   fill
                   style={{ objectFit: "cover" }}
-                  sizes="(max-width: 640px) 30vw, 380px"
+                  sizes="(max-width: 640px) 90vw, 380px"
                   className="svc-card-img"
                 />
               )}
@@ -275,7 +258,7 @@ export default function Services() {
               }}>
                 <Icon size={20} weight="duotone" color="rgba(255,255,255,0.7)" />
                 <p style={{
-                  fontSize: "clamp(0.72rem, 1.1vw, 0.85rem)",
+                  fontSize: "clamp(0.85rem, 1.1vw, 0.95rem)",
                   fontWeight: 600,
                   color: "white",
                   margin: 0,
@@ -342,9 +325,95 @@ export default function Services() {
       </motion.div>
 
       <style>{`
-        @media (max-width: 640px) {
-          .service-cards { grid-template-columns: repeat(1, 1fr) !important; }
+        /* ── Service row layout ── */
+        .service-row {
+          display: grid;
+          align-items: center;
         }
+        .service-row-num {
+          font-family: ui-monospace, monospace;
+          font-weight: 500;
+          letter-spacing: 0.04em;
+          user-select: none;
+        }
+        .service-row-title {
+          font-weight: 400;
+          letter-spacing: -0.03em;
+          line-height: 1.1;
+          margin: 0;
+        }
+        .service-row-desc {
+          font-weight: 300;
+          line-height: 1.55;
+          margin: 0;
+        }
+        .service-row-arrow {
+          width: 38px;
+          height: 38px;
+          border-radius: 50%;
+          border: 1px solid rgba(255,255,255,0.09);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        /* Desktop (≥768px) — 4-column row with side hover extension */
+        @media (min-width: 768px) {
+          .service-row {
+            grid-template-columns: 3.5rem 1fr clamp(14rem, 28%, 22rem) auto;
+            gap: clamp(1rem, 3vw, 2rem);
+            padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1rem, 4vw, 3rem);
+            margin-left: calc(-1 * clamp(1rem, 4vw, 3rem));
+            margin-right: calc(-1 * clamp(1rem, 4vw, 3rem));
+          }
+          .service-row-num   { font-size: 0.8rem; padding-top: 0.15em; }
+          .service-row-title { font-size: clamp(1.5rem, 3.2vw, 2.5rem); }
+          .service-row-desc  { font-size: clamp(0.78rem, 1vw, 0.875rem); }
+        }
+
+        /* Mobile (<768px) — 3-column grid, description below title */
+        @media (max-width: 767px) {
+          .service-row {
+            grid-template-columns: 2.25rem 1fr auto;
+            grid-template-areas:
+              "num title arrow"
+              ".   desc  desc";
+            column-gap: 0.85rem;
+            row-gap: 0.4rem;
+            align-items: start;
+            padding: 1.1rem 0;
+          }
+          .service-row-num   {
+            grid-area: num;
+            font-size: 0.72rem;
+            padding-top: 0.45em;
+          }
+          .service-row-title {
+            grid-area: title;
+            align-self: center;
+            font-size: 1.15rem;
+          }
+          .service-row-arrow {
+            grid-area: arrow;
+            align-self: center;
+            width: 34px;
+            height: 34px;
+          }
+          .service-row-desc  {
+            grid-area: desc;
+            font-size: 0.78rem;
+            padding-top: 0.1rem;
+          }
+        }
+
+        /* ── Highlight cards stack on small mobile ── */
+        @media (max-width: 640px) {
+          .service-cards {
+            grid-template-columns: 1fr !important;
+          }
+        }
+
         .marquee-img { filter: brightness(0.82) saturate(0.85); transition: filter 0.3s ease; }
         .marquee-img-wrap:hover .marquee-img { filter: brightness(1) saturate(1); }
         .svc-card-img { transition: transform 0.5s ease; }
