@@ -11,6 +11,19 @@ const nextConfig: NextConfig = {
   },
   compress: true,
   allowedDevOrigins: ["192.168.68.57"],
+
+  // ── 301 the Vercel preview/production subdomain to the canonical apex ──
+  // Prevents Google from indexing newsmileld.vercel.app even if discovered.
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "newsmileld.vercel.app" }],
+        destination: "https://newsmileld.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -12,6 +12,11 @@ const pages: [string, string][] = [
   ["Blog",        "/blog"],
 ];
 
+const materials: [string, string][] = [
+  ["Corona de disilicato de litio", "/corona-disilicato-litio"],
+  ["Zirconia dental",               "/zirconia-dental"],
+];
+
 const social: [string, string][] = [
   ["Instagram", "https://www.instagram.com/new_smile.dental_lab"],
   ["Facebook",  "https://www.facebook.com/JLAANewSmile/"],
@@ -85,13 +90,21 @@ export default function Footer() {
         max-w-[1200px] mx-auto
         px-[clamp(1.5rem,4vw,3rem)] pt-20 pb-12
         grid gap-y-12 gap-x-16
-        grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.6fr]
+        grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1.6fr]
       ">
         {/* Pages */}
         <div>
           <ColHead>Páginas</ColHead>
           <ul className="list-none flex flex-col gap-[0.65rem]">
             {pages.map(([l, href]) => <NavLink key={l} label={l} href={href} />)}
+          </ul>
+        </div>
+
+        {/* Materials */}
+        <div>
+          <ColHead>Materiales</ColHead>
+          <ul className="list-none flex flex-col gap-[0.65rem]">
+            {materials.map(([l, href]) => <NavLink key={l} label={l} href={href} />)}
           </ul>
         </div>
 
