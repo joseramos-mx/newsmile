@@ -68,6 +68,7 @@ export const metadata: Metadata = {
     "newsmile dental",
   ],
 
+  applicationName: SITE_NAME,
   authors: [{ name: SITE_NAME, url: SITE_URL }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
@@ -273,13 +274,50 @@ const jsonLd = {
       ],
     },
     {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      alternateName: [
+        "NewSmile Dental Lab",
+        "NewSmile",
+        "New Smile",
+        "New Smile Laboratorio Dental",
+      ],
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/favicon/android-chrome-512x512.png`,
+        width: 512,
+        height: 512,
+      },
+      sameAs: [
+        "https://www.instagram.com/new_smile.dental_lab",
+        "https://www.facebook.com/JLAANewSmile/",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: PHONE,
+        email: EMAIL,
+        contactType: "customer service",
+        areaServed: "MX",
+        availableLanguage: ["Spanish", "es-MX"],
+      },
+    },
+    {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
       url: SITE_URL,
       name: SITE_NAME,
+      alternateName: [
+        "NewSmile Dental Lab",
+        "NewSmile",
+        "New Smile",
+        "New Smile Laboratorio Dental",
+      ],
       description:
         "Laboratorio dental en Toluca, México — disilicato de litio, zirconia y cerámica estética.",
-      publisher: { "@id": `${SITE_URL}/#business` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      inLanguage: "es-MX",
       potentialAction: {
         "@type": "SearchAction",
         target: {
@@ -288,7 +326,6 @@ const jsonLd = {
         },
         "query-input": "required name=search_term_string",
       },
-      inLanguage: "es-MX",
     },
     {
       "@type": "FAQPage",
