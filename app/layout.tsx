@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Laboratorio dental en Toluca, Estado de México. Especialistas en coronas de disilicato de litio, zirconia dental, prótesis sobre implantes y cerámica de alta estética. Calidad High End en tiempos reducidos, consultoría caso por caso y 2 años de garantía.",
+    "Laboratorio dental B2B en Toluca, Estado de México — atendemos exclusivamente a odontólogos y especialistas rehabilitadores. Fabricamos coronas de disilicato de litio (IPS e.max), zirconia dental, prótesis sobre implantes y cerámica de alta estética. No somos clínica dental ni marca de alineadores. Calidad High End, consultoría caso por caso, 2 años de garantía.",
 
   keywords: [
     // ── Materiales (alta intención comercial) ──
@@ -139,14 +139,23 @@ const jsonLd = {
     {
       "@type": ["LocalBusiness", "MedicalBusiness"],
       "@id": `${SITE_URL}/#business`,
+      additionalType: "https://en.wikipedia.org/wiki/Dental_laboratory",
       name: SITE_NAME,
+      legalName: "New Smile Dental Lab",
       alternateName: [
-        "NewSmile",
         "NewSmile Dental Lab",
+        "NewSmile",
+        "New Smile",
         "New Smile Laboratorio Dental",
+        "Laboratorio Dental New Smile Toluca",
       ],
       description:
-        "Laboratorio dental en Toluca, Estado de México. Especialistas en coronas de disilicato de litio, zirconia dental, prótesis sobre implantes y cerámica de alta estética. Más de 10 años reproduciendo la naturalidad de los tejidos dentales.",
+        "Laboratorio dental B2B en Toluca, Estado de México. Fabricamos coronas de disilicato de litio (IPS e.max), zirconia dental, prótesis sobre implantes y cerámica de alta estética para odontólogos y especialistas rehabilitadores. Más de 10 años reproduciendo la naturalidad de los tejidos dentales.",
+      disambiguatingDescription:
+        "Laboratorio dental profesional (dental laboratory / laboratorio protésico) que fabrica prótesis fijas, coronas y restauraciones cerámicas por encargo de odontólogos. NO es una clínica dental, NO atiende pacientes directamente, y NO es una marca de alineadores transparentes. Servicio exclusivamente B2B para profesionales de la odontología.",
+      slogan: "El laboratorio dental que tu práctica merece — Toluca, México",
+      keywords:
+        "laboratorio dental, dental laboratory, laboratorio protésico, disilicato de litio, IPS e.max, zirconia dental, prótesis fija, prótesis sobre implantes, cerámica dental, CAD/CAM dental, Toluca, Estado de México",
       url: SITE_URL,
       logo: `${SITE_URL}/favicon/android-chrome-512x512.png`,
       image: `${SITE_URL}/bgheronew.png`,
@@ -276,19 +285,30 @@ const jsonLd = {
     {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
+      additionalType: "https://en.wikipedia.org/wiki/Dental_laboratory",
       name: SITE_NAME,
+      legalName: "New Smile Dental Lab",
       alternateName: [
         "NewSmile Dental Lab",
         "NewSmile",
         "New Smile",
         "New Smile Laboratorio Dental",
+        "Laboratorio Dental New Smile Toluca",
       ],
+      description:
+        "Laboratorio dental B2B en Toluca, México, especializado en disilicato de litio, zirconia y cerámica estética para odontólogos y especialistas rehabilitadores.",
+      disambiguatingDescription:
+        "Laboratorio dental (dental laboratory). Fabrica restauraciones cerámicas por encargo de profesionales de la odontología. No es clínica dental, no atiende pacientes, y no es marca de alineadores.",
       url: SITE_URL,
       logo: {
         "@type": "ImageObject",
         url: `${SITE_URL}/favicon/android-chrome-512x512.png`,
         width: 512,
         height: 512,
+      },
+      foundingLocation: {
+        "@type": "Place",
+        name: "Toluca, Estado de México",
       },
       sameAs: [
         "https://www.instagram.com/new_smile.dental_lab",
@@ -331,6 +351,22 @@ const jsonLd = {
       "@type": "FAQPage",
       "@id": `${SITE_URL}/#faq`,
       mainEntity: [
+        {
+          "@type": "Question",
+          name: "¿Qué es New Smile Dental Lab?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "New Smile Dental Lab es un laboratorio dental B2B ubicado en Toluca, Estado de México. Fabricamos coronas de disilicato de litio (IPS e.max), zirconia dental, prótesis sobre implantes y cerámica de alta estética por encargo de odontólogos y especialistas rehabilitadores. No somos una clínica dental, no atendemos pacientes directamente, y no somos una marca de alineadores transparentes.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿New Smile Dental Lab es una clínica o un laboratorio?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Somos un laboratorio dental (dental laboratory), no una clínica. Trabajamos exclusivamente para profesionales de la odontología — no atendemos pacientes finales. Un odontólogo o especialista nos envía el caso (impresión física o archivo digital STL desde escáner intraoral) y nosotros fabricamos la restauración cerámica que el clínico coloca en boca.",
+          },
+        },
         {
           "@type": "Question",
           name: "¿Qué es una corona de disilicato de litio?",
